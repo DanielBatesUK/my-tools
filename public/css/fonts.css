@@ -13,3 +13,44 @@
        url('../fonts/ibm-plex-mono-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/ibm-plex-mono-v12-latin-regular.svg#IBMPlexMono') format('svg'); /* Legacy iOS */
 }
+
+/* ibm-plex-mono-regular - latin */
+@font-face {
+  font-family: 'Consolas';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Consolas.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/Consolas.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Consolas.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Consolas.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Consolas.svg#IBMPlexMono') format('svg'); /* Legacy iOS */
+}
+
+/* overpass-mono-regular - latin */
+@font-face {
+  font-family: 'Overpass Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/overpass-mono-v15-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/overpass-mono-v15-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/overpass-mono-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/overpass-mono-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/overpass-mono-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/overpass-mono-v15-latin-regular.svg#OverpassMono') format('svg'); /* Legacy iOS */
+}
+
+/* overpass-regular - latin */
+@font-face {
+  font-family: 'Overpass';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/overpass-v12-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/overpass-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/overpass-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/overpass-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/overpass-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/overpass-v12-latin-regular.svg#Overpass') format('svg'); /* Legacy iOS */
+}

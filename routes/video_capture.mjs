@@ -6,14 +6,15 @@ import timeStamp from '../lib/time_stamp.mjs';
 // ################################################################################################
 
 // Route - Index
-function routeIndex(req, res) {
+function routeVideoCapture(req, res) {
   try {
-    console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'index'`);
+    console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'video-capture'`);
     const page_options = {
-      page_heading: 'Index',
-      page_content: 'Hello World!'
+      page_heading: 'Video-Capture',
+      page_content: 'Hello World!',
+      url_query: JSON.stringify(req.query),
     }
-    res.render(process.env.VIEW_INDEX, page_options);
+    res.render(process.env.VIEW_VIDEO_CAPTURE, page_options);
     res.end();
   } catch (error) {
     console.error(error);
@@ -25,4 +26,4 @@ function routeIndex(req, res) {
 // ################################################################################################
 
 // Exports
-export default routeIndex;
+export default routeVideoCapture;

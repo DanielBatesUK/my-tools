@@ -30,6 +30,8 @@ import timeStamp from './lib/time_stamp.mjs';
 
 // Routes
 import routeIndex from './routes/get_index.mjs';
+import routeHashes from './routes/all_hashes.mjs';
+import routeVideoCapture from './routes/video_capture.mjs';
 
 // ################################################################################################
 
@@ -48,6 +50,7 @@ const app = express();
 app.enable('trust proxy');
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 app.set('view engine', 'pug');
 
@@ -61,6 +64,12 @@ app.all('*', (req, res, next) => {
 
 // HTTP request for index page
 app.get(process.env.ROUTE_INDEX, routeIndex);
+
+// HTTP request for hashes page
+app.all(process.env.ROUTE_HASHES, routeHashes);
+
+// HTTP request for video capture page
+app.all(process.env.ROUTE_VIDEO_CAPTURE, routeVideoCapture);
 
 // ################################################################################################
 

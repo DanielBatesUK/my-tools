@@ -1,0 +1,100 @@
+doctype html
+html(lang='en')
+  head
+    title !{page_title}
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='./css/fonts.css')
+    link(rel='stylesheet', href='./css/default.css')
+    link(rel='icon' type='image/png' href='./images/favicon.png')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+    style.
+      html, body {
+        margin:0;
+        border:0;
+        padding:0;
+        background-color: #101010;
+      }
+
+      #container {
+        margin: 0px auto;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #videoElement {
+        width: 100vw;
+        height: 100vh;
+        background-color: #101010;
+      }
+  body     
+    meta(name='theme-color' content='#101010')
+    div(id='container')
+      video(autoplay='true' id='videoElement')
+    div(id='controls' class='page' style='display: none; position: absolute; top: 1rem; left: 1rem; max-width: 33vw; z-index:2;')
+      h1 Video Capture Settings
+      h2 Audio and video device
+      label Audio device:
+      select(id='input_audio' name='input_audio')
+      label Video device:
+      select(id='input_video' name='input_video')
+      h2 Audio Settings
+      h2 Video Settings
+      h2 URL 
+    script.
+      const deviceObject = {};
+      navigator.mediaDevices.enumerateDevices()
+        .then((devices) => {
+          devices.forEach((device) => {
+            if(typeof deviceObject[device.kind] === 'undefined') deviceObject[device.kind] = {};
+            Object.assign(deviceObject[device.kind], { [device.label]: { id: device.deviceId, kind: device.kind, label: device.label, url: encodeURIComponent(device.label) } } );
+            var selectID = undefined
+            if (device.kind === 'audioinput') selectID = 'input_audio';
+            if (device.kind === 'videoinput') selectID = 'input_video';
+            if(typeof selectID !== 'undefined') {
+              var select = document.getElementById(selectID);
+              var option = document.createElement('option');
+              option.text  = device.label;
+              option.value = device.label;
+              select.appendChild(option);
+            }
+          });
+        })
+        .then((devices) => {
+          window.onload = function (){
+            const aDevice = (urlParams.a ? urlParams.a : 'default');
+            const vDevice = (urlParams.v ? urlParams.v : 'default');
+            const aChannels = Number((urlParams.ac ? urlParams.ac : 2));
+            const aSize = Number((urlParams.as ? urlParams.as : 16));
+            const aRate = Number((urlParams.ar ? urlParams.ar : 48000));
+            const vWidth = Number((urlParams.vw ? urlParams.vw : 1920));
+            const vHeight = Number((urlParams.vh ? urlParams.vh : 1080));
+            const vFrame = Number((urlParams.vf ? urlParams.vf : 60));
+            startStream(aDevice, vDevice, aChannels, aSize, aRate, vWidth, vHeight, vFrame)
+          };
+        })
+        .catch((err) => {
+          document.title = "Error - Video Capture";
+          console.log("Error:" + err);
+        });
+
+
+      var video = document.querySelector("#videoElement");
+      const urlParams = !{url_query};
+      
+      function startStream(aDevice = 'default', vDevice = 'default', aChannels = 2, aSize = 16, aRate = 48000, vWidth = 1920, vHeight = 1080, vFrame = 60) {
+          if (navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ 
+            audio: {deviceId: {exact: deviceObject.audioinput[aDevice]['id']}, channelCount: aChannels, sampleSize: aSize, sampleRate: aRate, echoCancellation: false, noiseSuppression: false, autoGainControl: false},
+            video: {deviceId: {exact: deviceObject.videoinput[vDevice]['id']}, width: vWidth, height: vHeight, frameRate: vFrame}
+          })
+          .then((stream) => {
+            document.title = `Video Capture - ${deviceObject.videoinput[vDevice]['label']} - ${vWidth}x${vHeight} ${vFrame}fps`;
+            video.srcObject = stream;
+          })
+          .catch((err) => {
+            document.title = "Error - Video Capture";
+            console.log("Error:" + err);
+          });
+        }
+      }
