@@ -10,8 +10,7 @@ function routeVideoCapture(req, res) {
   try {
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'video-capture'`);
     const page_options = {
-      page_heading: 'Video-Capture',
-      page_content: 'Hello World!',
+      page_heading: 'Video Capture',
       url_query: JSON.stringify(req.query),
     }
     res.render(process.env.VIEW_VIDEO_CAPTURE, page_options);

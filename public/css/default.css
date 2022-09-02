@@ -11,8 +11,10 @@
 
   --link-color: rgba(51,140,205,1);
   
+  /* Use 500 colours */
   --button-enabled-background-color: rgba(76,175,80,0.66);
   --button-enabled-foreground-color: rgba(255,255,255,0.66);
+  --button-2-enabled-background-color: rgb(33, 150, 243);
   --button-border-radius: 0.50rem;
 
   --border-radius: 0.50rem;
@@ -97,6 +99,21 @@ h2:nth-child(2) {
 h2 small {
   margin-left: calc(var(--font-size) * 0.50);
   font-size: calc(var(--font-size) * 1.00);
+  font-weight: lighter;
+}
+
+h3 {
+  margin: calc(var(--border-radius) * 3) 0 var(--border-radius) 0;
+  font-size: calc(var(--font-size) * 1.00);
+}
+
+h3:nth-child(2) {
+  margin: 0 0 var(--border-radius) 0;
+}
+
+h3 small {
+  margin-left: calc(var(--font-size) * 0.375);
+  font-size: calc(var(--font-size) * 0.75);
   font-weight: lighter;
 }
 
@@ -195,6 +212,10 @@ input[type=submit] {
   background-color: var(--button-enabled-background-color);
 }
 
+input[type=button] {
+  background-color: var(--button-2-enabled-background-color);
+}
+
 .page {
   overflow: visible;
   width: 100%;
@@ -208,3 +229,54 @@ input[type=submit] {
   -webkit-backdrop-filter: blur(10px);
   box-shadow: var(--box-shadow);
 }
+
+/* width */
+.page::-webkit-scrollbar {
+  width: var(--font-size);
+}
+
+/* Track */
+.page::-webkit-scrollbar-track {
+  box-shadow: var(--box-shadow); 
+  border-radius: var(--border-radius);
+  background: var(--background-color)
+}
+ 
+/* Handle */
+.page::-webkit-scrollbar-thumb {
+  background: var(--text-color); 
+  border-radius: var(--border-radius);
+}
+
+/* Handle on hover */
+.page::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color); 
+}
+
+.page div.inline-block {
+  display: inline-block;
+  width: auto;
+  margin: 0 var(--border-radius) var(--border-radius) 0;
+  border: 0;
+  padding: var(--border-radius);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
+}
+
+.page div.block {
+  display: block;
+  width: auto;
+  margin: 0 var(--border-radius) var(--border-radius) 0;
+  border: 0;
+  padding: var(--border-radius);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
+}
+
+.page div.inline-block h3 {
+  width:auto;
+  margin:0;
+}
+
