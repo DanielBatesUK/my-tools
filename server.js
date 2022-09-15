@@ -22,6 +22,7 @@
 import cookieParser from 'cookie-parser';
 import dotevn from 'dotenv';
 import express from 'express';
+import path from 'path';
 
 // My Imports
 import timeStamp from './lib/time_stamp.mjs';
@@ -31,7 +32,7 @@ import timeStamp from './lib/time_stamp.mjs';
 // Routes
 import routeIndex from './routes/get_index.mjs';
 import routeHashes from './routes/all_hashes.mjs';
-import routeVideoCapture from './routes/video_capture.mjs';
+//import routeVideoCapture from './routes/video_capture.mjs';
 
 // ################################################################################################
 
@@ -42,6 +43,7 @@ dotevn.config();
 
 // Starting
 console.log(`${timeStamp()} - Server Starting`);
+const __dirname = path.resolve();
 
 // ################################################################################################
 
@@ -69,7 +71,10 @@ app.get(process.env.ROUTE_INDEX, routeIndex);
 app.all(process.env.ROUTE_HASHES, routeHashes);
 
 // HTTP request for video capture page
-app.all(process.env.ROUTE_VIDEO_CAPTURE, routeVideoCapture);
+// app.all(process.env.ROUTE_VIDEO_CAPTURE, routeVideoCapture);
+app.all(process.env.ROUTE_VIDEO_CAPTURE, (req, res) => {
+    res.sendfile('/public/video-capture.html' , { root : __dirname});
+});
 
 // ################################################################################################
 

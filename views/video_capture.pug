@@ -64,15 +64,11 @@ html(lang='en')
         display: none;
         position: absolute;
         top: 1rem;
-        
         left: 5rem;
-        
         width: auto;
         max-height: calc(100% - 2rem);
         overflow: auto;
-
         margin:0 5rem 1rem 0;
-        
         z-index:2;
         opacity: 0;
         transition: all 0.25s;
@@ -158,24 +154,24 @@ html(lang='en')
       input(type='button' value='Goto URL' onclick='window.location.href = document.getElementById(\'url\').textContent;')
     script.
       // Variables
-      const urlParams = !{url_query};
-      var video = document.querySelector("#video-player");
-      const vResolutions = {'2160': 3840, '1080': 1920, '720': 1280, '480':640};
-      let currentConfig = {};
+      let video = document.querySelector("#video-player");
       let tracks;
-      let deviceObject = {};
+      let mediaDevicesObject = {};
       let parametersObject = {};
       let settingsTimeout;
+      const vResolutions = {'2160': 3840, '1080': 1920, '720': 1280, '480':640};
+      const urlParams = Object.fromEntries(new URLSearchParams(location.search));
+      console.log('urlParams', urlParams);
 
       // Get media devices
       async function getMediaDevices() {
         try {
-          console.log('Setting deviceObject...');
+          console.log('Setting mediaDevicesObject...');
           const fetchedDevices = await navigator.mediaDevices.enumerateDevices();
-          fetchedDevices.forEach((device) => {
-            deviceObject[device.label] = { kind: device.kind, id: device.deviceId, label: device.label }
+          fetchedDevices.filter(obj => obj.kind==='audioinput' || obj.kind==='videoinput').forEach((device) => {
+            mediaDevicesObject[device.label] = { kind: device.kind, id: device.deviceId, label: device.label }
           });
-          console.log(deviceObject);
+          console.log('mediaDevicesObject', mediaDevicesObject);
         } catch (error) {
           console.error(error);
         }
@@ -185,16 +181,14 @@ html(lang='en')
       function setMediaDevicesControls() {
         try {
           console.log('Setting media device controls...');
-          Object.keys(deviceObject).forEach((key) => {
-            if(typeof deviceObject[key].kind !== 'undefined' && (deviceObject[key].kind === 'audioinput' || deviceObject[key].kind === 'videoinput')) {
-              // Adding option to selects
-              console.log(`Adding '${deviceObject[key].label}' to '${deviceObject[key].kind}' controls.`);
-              var select = document.getElementById(deviceObject[key].kind);
-              var option = document.createElement('option');
-              option.text  = deviceObject[key].label;
-              option.value = deviceObject[key].label;
-              select.appendChild(option);
-            }
+          Object.keys(mediaDevicesObject).forEach((key) => {
+            // Adding option to selects
+            console.log(`Adding '${mediaDevicesObject[key].label}' device to '${mediaDevicesObject[key].kind}' controls.`);
+            const select = document.getElementById(mediaDevicesObject[key].kind);
+            const option = document.createElement('option');
+            option.text  = mediaDevicesObject[key].label;
+            option.value = mediaDevicesObject[key].label;
+            select.appendChild(option);
           });
         } catch (error) {
           console.error(error);
@@ -216,7 +210,7 @@ html(lang='en')
             vh: (urlParams.vh ? Number(urlParams.vh) : 720),
             vf: (urlParams.vf ? Number(urlParams.vf) : 30)
           };
-          console.log(parametersObject);
+          console.log('parametersObject', parametersObject);
         } catch (error) {
           console.error(error);
         }
@@ -249,7 +243,7 @@ html(lang='en')
           console.log('Setting controls URL...');
           const controlsURL = `${window.location.protocol}//${window.location.hostname}${window.location.pathname}?a=${encodeURIComponent(parametersObject.a)}&ac=${parametersObject.ac}&as=${parametersObject.as}&ar=${parametersObject.ar}&v=${encodeURIComponent(parametersObject.v)}&vw=${parametersObject.vw}&vh=${parametersObject.vh}&vf=${parametersObject.vf}`
           document.getElementById('url').textContent = controlsURL;
-          console.log(controlsURL);
+          console.log('controlsURL', controlsURL);
         } catch (error) {
           console.error(error);
         }
@@ -272,7 +266,7 @@ html(lang='en')
             video.srcObject = null;
             console.log('Media stream stopped.');
           } else {
-              console.log('No media stream playing.');
+            console.log('No media stream playing.');
           }
         } catch (error) {
           console.error(error);
@@ -287,7 +281,7 @@ html(lang='en')
           const constraints = { 
             audio: {
               deviceId: {
-                exact: deviceObject[parametersObject.a].id
+                exact: mediaDevicesObject[parametersObject.a].id
               },
               channelCount: parametersObject.ac,
               sampleSize: parametersObject.as,
@@ -298,18 +292,18 @@ html(lang='en')
             },
             video: {
               deviceId: {
-                exact: deviceObject[parametersObject.v].id
+                exact: mediaDevicesObject[parametersObject.v].id
               },
               width: parametersObject.vw,
               height: parametersObject.vh,
               frameRate: parametersObject.vf
             }
           };
-          console.log(constraints);
+          console.log('constraints', constraints);
           stream = await navigator.mediaDevices.getUserMedia(constraints);
           video.srcObject = stream;
           tracks = stream.getTracks();
-          document.title = `Video Capture - ${deviceObject[parametersObject.v]['label']} - ${parametersObject.vw}x${parametersObject.vh} ${parametersObject.vf}fps`;
+          document.title = `Video Capture - ${mediaDevicesObject[parametersObject.v]['label']} - ${parametersObject.vw}x${parametersObject.vh} ${parametersObject.vf}fps`;
         } catch (error) {
           console.error(error);
           document.title = "Video Capture - Error";
@@ -330,7 +324,7 @@ html(lang='en')
             vh: Number(document.querySelector('input[name="vh"]:checked').value),
             vf: Number(document.querySelector('input[name="vf"]:checked').value)
           };
-          console.log(parametersObject);
+          console.log('parametersObject', parametersObject);
         } catch (error) {
           console.error(error);
         }
