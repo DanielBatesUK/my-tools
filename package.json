@@ -29,6 +29,6 @@
     "eslint-plugin-import": "^2.26.0"
   },
   "engines": {
-    "node": "^14.x"
+    "node": "^14.0.0"
   }
 }
