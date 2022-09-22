@@ -32,7 +32,7 @@ import timeStamp from './lib/time_stamp.mjs';
 // Routes
 import routeIndex from './routes/get_index.mjs';
 import routeHashes from './routes/all_hashes.mjs';
-//import routeVideoCapture from './routes/video_capture.mjs';
+import routeVideoCapture from './routes/video_capture.mjs';
 
 // ################################################################################################
 
@@ -71,10 +71,7 @@ app.get(process.env.ROUTE_INDEX, routeIndex);
 app.all(process.env.ROUTE_HASHES, routeHashes);
 
 // HTTP request for video capture page
-// app.all(process.env.ROUTE_VIDEO_CAPTURE, routeVideoCapture);
-app.all(process.env.ROUTE_VIDEO_CAPTURE, (req, res) => {
-    res.sendfile('/public/video-capture.html' , { root : __dirname});
-});
+app.all(process.env.ROUTE_VIDEO_CAPTURE, routeVideoCapture);
 
 // ################################################################################################
 
