@@ -1,6 +1,7 @@
 // ################################################################################################
 
-// Express-Template - A simple node.js express template
+// My-Tools - A simple node.js express server with useful tools
+// I've built and used for myself over time.
 // Copyright (C) 2022  Daniel Bates
 
 // This program is free software: you can redistribute it and/or modify
@@ -22,16 +23,12 @@
 import cookieParser from 'cookie-parser';
 import dotevn from 'dotenv';
 import express from 'express';
-import path from 'path';
-
-// My Imports
-import timeStamp from './lib/time_stamp.mjs';
 
 // ################################################################################################
 
 // Routes
-import routeIndex from './routes/get_index.mjs';
-import routeHashes from './routes/all_hashes.mjs';
+import routeIndex from './routes/index.mjs';
+import routeHashes from './routes/hashes.mjs';
 import routeVideoCapture from './routes/video_capture.mjs';
 
 // ################################################################################################
@@ -42,8 +39,7 @@ dotevn.config();
 // ################################################################################################
 
 // Starting
-console.log(`${timeStamp()} - Server Starting`);
-const __dirname = path.resolve();
+console.log('Server Starting');
 
 // ################################################################################################
 
@@ -52,32 +48,33 @@ const app = express();
 app.enable('trust proxy');
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 app.set('view engine', 'pug');
+const port = process.env.PORT || 3000;
 
 // ################################################################################################
 
 // HTTP requests all
 app.all('*', (req, res, next) => {
-  console.log(`${timeStamp()} - Received HTTP ${req.method} request for '${req.path}'`);
+  console.log(`Received HTTP ${req.method} request for '${req.path}'`);
   next();
 });
 
 // HTTP request for index page
-app.get(process.env.ROUTE_INDEX, routeIndex);
+app.get('/', routeIndex);
 
 // HTTP request for hashes page
-app.all(process.env.ROUTE_HASHES, routeHashes);
+app.all('/hashes', routeHashes);
 
 // HTTP request for video capture page
-app.all(process.env.ROUTE_VIDEO_CAPTURE, routeVideoCapture);
+app.all('/video-capture', routeVideoCapture);
 
 // ################################################################################################
 
 // Listen for HTTP requests
-app.listen(process.env.PORT, () => {
-  console.log(`${timeStamp()} - HTTP server started and listening to port ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`HTTP server started and listening to port ${process.env.PORT}`);
 });
 
 // ################################################################################################

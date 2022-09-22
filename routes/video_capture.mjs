@@ -1,23 +1,22 @@
 // ################################################################################################
 
-// My Imports
-import timeStamp from '../lib/time_stamp.mjs';
+// Imports
 
 // ################################################################################################
 
 // Route - Index
 function routeVideoCapture(req, res) {
   try {
-    console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'video-capture'`);
-    const page_options = {
+    console.log(`Processing HTTP ${req.method} request for '${req.path}' as 'video-capture'`);
+    const pageOptions = {
       page_heading: 'Video Capture',
       url_query: JSON.stringify(req.query),
-    }
-    res.render(process.env.VIEW_VIDEO_CAPTURE, page_options);
+    };
+    res.render(process.env.VIEW_VIDEO_CAPTURE, pageOptions);
     res.end();
   } catch (error) {
     console.error(error);
-    res.send(`${timeStamp()} - Index error`);
+    res.send('Index error');
     res.end();
   }
 }

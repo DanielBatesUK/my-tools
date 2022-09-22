@@ -1,23 +1,22 @@
 // ################################################################################################
 
-// My Imports
-import timeStamp from '../lib/time_stamp.mjs';
+// Imports
 
 // ################################################################################################
 
 // Route - Index
 function routeIndex(req, res) {
   try {
-    console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'index'`);
-    const page_options = {
+    console.log(`Processing HTTP ${req.method} request for '${req.path}' as 'index'`);
+    const pageOptions = {
       page_heading: 'Index',
-      page_content: 'Hello World!'
-    }
-    res.render(process.env.VIEW_INDEX, page_options);
+      page_content: 'Hello World!',
+    };
+    res.render(process.env.VIEW_INDEX, pageOptions);
     res.end();
   } catch (error) {
     console.error(error);
-    res.send(`${timeStamp()} - Index error`);
+    res.send('Index error');
     res.end();
   }
 }
