@@ -44,6 +44,10 @@ npm start
 
 ### Index
 
+> /
+
+Just a simple index page
+
 ### Hashes
 
 ### Video Capture

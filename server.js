@@ -29,6 +29,7 @@ import express from 'express';
 import routeIndex from './routes/index.js';
 import routeHashes from './routes/hashes.js';
 import routeVideoCapture from './routes/video_capture.js';
+import routeGitHubWebhook from './routes/github_webhook.js';
 
 // ################################################################################################
 
@@ -66,9 +67,14 @@ app.all('/video-capture', routeVideoCapture);
 
 // ################################################################################################
 
+// HTTP request for GitHub Webhook (for auto-fetching)
+app.post('/github-webhook', routeGitHubWebhook);
+
+// ################################################################################################
+
 // Listen for HTTP requests
 app.listen(port, () => {
-  console.log(`HTTP server started and listening to port ${process.env.PORT}`);
+  console.log(`HTTP server started and listening to port ${port}`);
 });
 
 // ################################################################################################
