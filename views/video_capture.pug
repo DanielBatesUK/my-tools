@@ -222,13 +222,11 @@ html(lang='en')
           console.log('Setting controls...');
           // Audio controls
           document.getElementById('audioinput').value = parametersObject.a;
-            //document.getElementById('audioinput').onchange = updateStream;
           document.getElementById(`ac${parametersObject.ac}`).checked = true;
           document.getElementById(`as${parametersObject.as}`).checked = true;
           document.getElementById(`ar${parametersObject.ar}`).checked = true;
           // Video controls
           document.getElementById('videoinput').value = parametersObject.v;
-            //document.getElementById('videoinput').onchange = updateStream;
           document.getElementById(`vh${parametersObject.vh}`).checked = true;
           document.getElementById(`vf${parametersObject.vf}`).checked = true;
           console.log('Completed setting controls.');
@@ -331,6 +329,7 @@ html(lang='en')
 
       }
 
+      // Controls changed update stream
       async function controlsChange() {
         try {
           console.log('Controls change updating stream...');
