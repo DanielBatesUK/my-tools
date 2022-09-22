@@ -171,8 +171,6 @@ function routeIndex(req, res) {
     console.log(`Processing HTTP ${req.method} request for '${req.path}' as 'hashes'`);
     const inputString = String((req.body.inputString ? req.body.inputString : '')).toLowerCase();
     const pageOptions = {
-      page_heading: 'Hashes',
-      page_content: 'Hashes stuff goes here',
       input_string: inputString,
       full_md5: getHash(inputString, 32, false, false, false),
       alt_6: getHash(inputString, 6, true, true, false),

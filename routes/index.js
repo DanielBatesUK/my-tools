@@ -5,7 +5,7 @@ function routeIndex(req, res) {
   try {
     console.log(`Processing HTTP ${req.method} request for '${req.path}' as 'index'`);
     const pageOptions = {
-      page_heading: 'Index',
+      page_title: 'Index',
       page_content: 'Hello World!',
     };
     res.render('index', pageOptions);
