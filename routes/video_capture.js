@@ -8,7 +8,7 @@ function routeVideoCapture(req, res) {
     res.end();
   } catch (error) {
     console.error(error);
-    res.send('Index error');
+    res.send('Video capture error');
     res.end();
   }
 }
