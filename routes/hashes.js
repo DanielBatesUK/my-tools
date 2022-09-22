@@ -11,23 +11,15 @@ function getMD5(string) {
   return results;
 }
 
-function isLetter(char) {
-  return (/[a-zA-Z]/).test(char);
-}
-
-function isNumber(char) {
-  return (/[0-9]/).test(char);
-}
-
 function alternateCase(string) {
   let results = '';
   let capsCounter = 0;
-  for (let i = 0; i < string.length; i++) {
+  for (let i = 0; i < string.length; i += 1) {
     const char = string.substring(i, (i + 1));
     if ((/[a-zA-Z]/).test(char) === true) {
       // Is letter: so set case
       results += ((capsCounter % 2 === 0) ? char.toLowerCase() : char.toUpperCase());
-      capsCounter++;
+      capsCounter += 1;
     } else {
       // Is not a letter: add to results
       results += char;
@@ -40,6 +32,9 @@ function lowerUpperNumbers(string) {
   const hasLower = (/[a-z]/).test(string);
   const hasUpper = (/[A-Z]/).test(string);
   const hasNumbers = (/[0-9]/).test(string);
+  let results = string;
+
+  // Check string
   if (!!hasLower && !!hasUpper && !!hasNumbers) {
     // String has both letters and numbers (do nothing)
     console.info(`fixString - String okay: ${string}`);
@@ -48,62 +43,62 @@ function lowerUpperNumbers(string) {
 
   // Check for no lowercase letters
   if (!hasLower) {
-    console.info(`fixString - String has no lowercase letters: ${string}`);
+    console.info(`fixString - String has no lowercase letters: ${results}`);
     // No lowercase letters found - change last character
-    if (isLetter(string.substring(string.length - 1, string.length))) {
+    if ((/[a-zA-Z]/).test(results.substring(results.length - 1, results.length))) {
       // Last character is a letter - change to lowercase
-      console.info(`fixString - last character is a letter '${string.substring(string.length - 1, string.length)}' change to lowercase: ${string}`);
-      string = string.substring(0, string.length - 1) + string.substring(string.length - 1, string.length).toLowerCase();
+      console.info(`fixString - last character is a letter '${results.substring(results.length - 1, results.length)}' change to lowercase: ${results}`);
+      results = results.substring(0, results.length - 1) + results.substring(results.length - 1, results.length).toLowerCase();
     } else {
       // Last character is a number - create lowercase from number
-      let lastNumber = Number(string.substring(string.length - 1, string.length));
+      let lastNumber = Number(results.substring(results.length - 1, results.length));
       if (lastNumber > 5) lastNumber = Math.round(lastNumber / 2);
-      console.info(`fixString - Last character is a number '${string.substring(string.length - 1, string.length)}' change to lowercase character-code '${lastNumber + 65 + 32}' (${String.fromCharCode(lastNumber + 65 + 32)}): ${string}`);
-      string = string.substring(0, string.length - 1) + String.fromCharCode(lastNumber + 65 + 32);
+      console.info(`fixString - Last character is a number '${results.substring(results.length - 1, results.length)}' change to lowercase character-code '${lastNumber + 65 + 32}' (${String.fromCharCode(lastNumber + 65 + 32)}): ${string}`);
+      results = results.substring(0, results.length - 1) + String.fromCharCode(lastNumber + 65 + 32);
     }
     // Check string again
-    console.info(`fixString - Replaced last character with lowercase letter: ${string}`);
-    string = lowerUpperNumbers(string);
+    console.info(`fixString - Replaced last character with lowercase letter: ${results}`);
+    results = lowerUpperNumbers(results);
   }
 
   // Check for no uppercase letters
   if (!hasUpper) {
-    console.info(`fixString - String has no uppercase letters: ${string}`);
+    console.info(`fixString - String has no uppercase letters: ${results}`);
     // No uppercase letters found - change first character
-    if (isLetter(string.substring(0, 1))) {
+    if ((/[a-zA-Z]/).test(results.substring(0, 1))) {
       // First character is a letter - change to uppercase
-      console.info(`fixString - First character is a letter '${string.substring(0, 1)}' change to uppercase: ${string}`);
-      string = string.substring(0, 1).toUpperCase() + string.substring(1, string.length);
+      console.info(`fixString - First character is a letter '${results.substring(0, 1)}' change to uppercase: ${results}`);
+      results = results.substring(0, 1).toUpperCase() + results.substring(1, results.length);
     } else {
       // First character is a number - create uppercase from number
-      let firstNumber = Number(string.substring(0, 1));
+      let firstNumber = Number(results.substring(0, 1));
       if (firstNumber > 5) firstNumber /= 2;
-      console.info(`fixString - First character is a number '${string.substring(0, 1)}' change to uppercase character-code '${firstNumber + 65}' (${String.fromCharCode(firstNumber + 65)}): ${string}`);
-      string = String.fromCharCode(firstNumber + 65).toUpperCase() + string.substring(1, string.length);
+      console.info(`fixString - First character is a number '${results.substring(0, 1)}' change to uppercase character-code '${firstNumber + 65}' (${String.fromCharCode(firstNumber + 65)}): ${results}`);
+      results = String.fromCharCode(firstNumber + 65).toUpperCase() + results.substring(1, results.length);
     }
-    console.info(`fixString - Replaced first character with uppercase letter: ${string}`);
+    console.info(`fixString - Replaced first character with uppercase letter: ${results}`);
     // Check string again
-    string = lowerUpperNumbers(string);
+    results = lowerUpperNumbers(results);
   }
 
   // Check for no numbers
   if (!hasNumbers) {
-    console.info(`fixString - String has no numbers: ${string}`);
+    console.info(`fixString - String has no numbers: ${results}`);
     // No numbers found - change second character
-    console.info(`fixString - Second character (${string.substring(1, 2)}) is character-code '${string.charCodeAt(1)}' change letter to number '${(string.charCodeAt(1) - 65)}': ${string}`);
-    string = string.substring(0, 1) + (string.charCodeAt(1) - 65) + string.substring(2, string.length);
-    console.info(`fixString - Replaced second character with number: ${string}`);
+    console.info(`fixString - Second character (${results.substring(1, 2)}) is character-code '${results.charCodeAt(1)}' change letter to number '${(results.charCodeAt(1) - 65)}': ${results}`);
+    results = results.substring(0, 1) + (results.charCodeAt(1) - 65) + results.substring(2, results.length);
+    console.info(`fixString - Replaced second character with number: ${results}`);
     // Check string again
-    string = lowerUpperNumbers(string);
+    results = lowerUpperNumbers(results);
   }
 
   // Finished
-  return string;
+  return results;
 }
 
 function addSymbols(string) {
   // Array of text symbols used
-  const symbolsArray = new Array('!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~');
+  const symbolsArray = ['!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
 
   // Get first number in the string
   let firstNumber = Number(string[string.search(/[0-9]/)]);
@@ -115,10 +110,24 @@ function addSymbols(string) {
 
   // Replace first character in each part with symbol
   let results = '';
-  for (let i = 0; i < stringArray.length; i++) {
-    results = results + stringArray[i].substring(0, stringArray[i].length - 1) + symbolsArray[((++firstNumber * (i + 1)) % symbolsArray.length)];
+  for (let i = 0; i < stringArray.length; i += 1) {
+    results = results + stringArray[i].substring(0, stringArray[i].length - 1) + symbolsArray[(((firstNumber += 1) * (i + 1)) % symbolsArray.length)];
     console.info(`addSymbols - Replaced last character with symbol '${symbolsArray[((firstNumber * (i + 1)) % symbolsArray.length)]}' on string part #${i + 1} '${stringArray[i]}': ${string}`);
   }
+  // Finished
+  return results;
+}
+
+function getHash(string, outputLength = 32, forceAlternateCase = true, forceLowerUpperNumbers = true, forceSymbols = true) {
+  // Cut size of string
+  let results = String(getMD5(string)).substring(0, outputLength);
+  // Force alternating case
+  if (forceAlternateCase) results = alternateCase(results);
+  // Force Lower, Upper & numbers
+  if (forceLowerUpperNumbers) results = lowerUpperNumbers(results);
+  // Force symbols
+  if (forceSymbols) results = (results.length > 7 ? addSymbols(results) : '{ error: string length must >= 8 }');
+
   // Finished
   return results;
 }
@@ -127,7 +136,7 @@ function hashTableData(inputString) {
   const currentDate = new Date();
   const results = {};
   let ojectMonthName = '';
-  for (let i = -6; i < 6; i++) {
+  for (let i = -6; i < 6; i += 1) {
     if (Math.sign(i) === -1) ojectMonthName = `n${Math.abs(i)}_month`;
     if (Math.sign(i) === 0) ojectMonthName = 'current_month';
     if (Math.sign(i) === 1) ojectMonthName = `p${i}_month`;
@@ -145,23 +154,9 @@ function hashTableData(inputString) {
   return results;
 }
 
-function getHash(string, outputLength = 32, forceAlternateCase = true, forceLowerUpperNumbers = true, forceSymbols = true) {
-  // Cut size of string
-  string = String(getMD5(string)).substring(0, outputLength);
-  // Force alternating case
-  if (forceAlternateCase) string = alternateCase(string);
-  // Force Lower, Upper & numbers
-  if (forceLowerUpperNumbers) string = lowerUpperNumbers(string);
-  // Force symbols
-  if (forceSymbols) string = (string.length > 7 ? addSymbols(string) : '{ error: string length must >= 8 }');
-
-  // Finished
-  return string;
-}
-
 function spanTitles(string) {
   let results = '';
-  for (let i = 0; i < string.length; i++) {
+  for (let i = 0; i < string.length; i += 1) {
     results = `${results}<span title='${(i + 1)}'>${string[i]}</span>`;
   }
   // Finished
@@ -190,10 +185,8 @@ function routeIndex(req, res) {
       hash_table: hashTableData(inputString),
     };
     // Span Titles
-    for (const [key, value] of Object.entries(pageOptions)) {
-      pageOptions[`span_title_${key}`] = spanTitles(value);
-    }
-    res.render(process.env.VIEW_HASHES, pageOptions);
+    Object.keys(pageOptions).forEach((key) => { pageOptions[`span_title_${key}`] = spanTitles(pageOptions[key]); });
+    res.render('hashes', pageOptions);
     res.end();
   } catch (error) {
     console.error(error);

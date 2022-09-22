@@ -1,5 +1,14 @@
-include header
-div(class='page')
-    h1 !{page_heading}
-    p.
-      !{page_content}
+doctype html
+html(lang='en')
+  head
+    title !{page_title}
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='./css/fonts.css')
+    link(rel='stylesheet', href='./css/default.css')
+    link(rel='icon' type='image/png' href='./images/home-account.png')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+  body
+    div(class='page')
+      h1 !{page_heading}
+      p.
+        !{page_content}

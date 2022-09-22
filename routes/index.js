@@ -12,7 +12,7 @@ function routeIndex(req, res) {
       page_heading: 'Index',
       page_content: 'Hello World!',
     };
-    res.render(process.env.VIEW_INDEX, pageOptions);
+    res.render('index', pageOptions);
     res.end();
   } catch (error) {
     console.error(error);

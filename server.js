@@ -21,20 +21,14 @@
 
 // Imports
 import cookieParser from 'cookie-parser';
-import dotevn from 'dotenv';
 import express from 'express';
 
 // ################################################################################################
 
 // Routes
-import routeIndex from './routes/index.mjs';
-import routeHashes from './routes/hashes.mjs';
-import routeVideoCapture from './routes/video_capture.mjs';
-
-// ################################################################################################
-
-// dotEnv
-dotevn.config();
+import routeIndex from './routes/index.js';
+import routeHashes from './routes/hashes.js';
+import routeVideoCapture from './routes/video_capture.js';
 
 // ################################################################################################
 
