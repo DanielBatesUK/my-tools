@@ -32,7 +32,7 @@ function routeGitHubWebhook(req, res) {
       const gitPull = execSync(`cd ${localPath} && git pull`);
       console.log({ gitPull });
       const refresh = execSync(`cd ${localPath} && refresh`);
-      console.log({ refresh }); // for Glitch.com demo
+      console.log({ refresh }); // for Glitch.com demo restart
     } else {
       console.log('Default branch check mismatch:', { localBranch, gitHubPushBranch, gitHubDefaultBranch });
     }
