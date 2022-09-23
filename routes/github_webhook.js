@@ -29,8 +29,9 @@ function routeGitHubWebhook(req, res) {
     if (localBranch === gitHubDefaultBranch && localBranch === gitHubPushBranch) {
       console.log(`Default branch check successful: '${localBranch}'`);
       console.log(`Executing 'git pull' in '${localPath}'`);
-      const gitPull = execSync(`cd ${localPath} && git pull`);
+      const gitPull = execSync(`cd ${localPath} && git pull && refresh`);
       console.log({ gitPull });
+      console.log(execSync('refresh')); // for Glitch.com demo
     } else {
       console.log('Default branch check mismatch:', { localBranch, gitHubPushBranch, gitHubDefaultBranch });
     }
