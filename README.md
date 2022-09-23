@@ -44,9 +44,11 @@ npm start
 
 ### Index
 
-> /
+```Shell
+http://localhost:3000/
+```
 
-Just a simple index page
+Just a simple page. Nothing really to see here. Basically just a "Hello World".
 
 ### Hashes
 
