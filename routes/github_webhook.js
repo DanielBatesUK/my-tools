@@ -10,7 +10,7 @@ import { execSync } from 'child_process';
 function routeGitHubWebhook(req, res) {
   try {
     console.log(`Processing HTTP ${req.method} request for '${req.path}' as 'GitHub Webhook'`);
-    const secret = process.env.SESSION_SECRET;
+    const secret = process.env.GITHUB_WEBHOOK_SECRET;
     const expectedSignature = `sha1=${crypto.createHmac('sha1', secret).update(JSON.stringify(req.body)).digest('hex')}`;
     const receivedSignature = req.headers['x-hub-signature'];
     // Check Webhook signature
