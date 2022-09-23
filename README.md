@@ -64,7 +64,7 @@ Something I made this for messing around md5 hashes a long time ago. I've long s
 http://localhost:3000/video-capture
 ```
 
-This is one of my most recent tools. The gist, I have a Chromecast plugged into the HDMI port on my monitor. Occasionally I'd like to have content playing on my Chromecast in a window on my desktop. So I got myself one of them cheap USB HDMI capture devices and a HDMI splitter from Amazon. Then using this webpage I can view the USB HDMI capture device's output (the Chromecast). You can select any other video and audio input device for that matter. Change the settings via the cog in the top left corner (move mouse to show).
+This is one of my most recent tools. The gist, I have a Chromecast plugged into the HDMI port on my monitor. Occasionally I'd like to have content playing on my Chromecast in a window on my desktop. So I got myself one of them cheap USB HDMI capture devices and a HDMI splitter from Amazon. Then using this webpage I can view the USB HDMI capture device's output (the Chromecast). You can select any other video and audio input device for that matter. Change the settings via the cog in the top left corner (move mouse to show). You'll need to give this page webcam and mic permissions in order for it to work. Also, there's a stand-alone html version of this page [here](https://github.com/DanielBatesUK/my-tools/blob/89e35a8d1a0993bdb5e20cdac1fd744ca176777a/public/video-capture.html).
 
 ### More to come
 
