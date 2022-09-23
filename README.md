@@ -80,7 +80,7 @@ I'd add more stuff here, as and when I get around to it. But I wouldn't hold out
 
 ## GitHub Webhooks
 
-I've added a GitHub webhook handler. This is for the demo that hosted on <https://glitch.com> (link below). This is to keep the my-tools demo up to date. As it pulls whenever a push is made to the default branch. If you want to use this, the you will need a `GITHUB_WEBHOOK_SECRET` env variable; that matches the secret in your webhook on your repo.
+I've added a GitHub webhook handler. This is for the demo that hosted on <https://glitch.com> (link below). This is to keep the my-tools demo up to date. As it pulls whenever a push is made to the default branch. If you want to use this, the you will need a `GITHUB_WEBHOOK_SECRET` env variable; that matches the secret in your webhook on your repo. testing webhook
 
 ## Demo
 
