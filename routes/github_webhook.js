@@ -33,7 +33,7 @@ function routeGitHubWebhook(req, res) {
       console.log({ gitPull });
       try {
         // Refresh Glitch after 30secs
-        console.log('Refreshing Glitch after 30secs');
+        console.log('Refreshing Glitch in 30secs');
         setTimeout(() => {
           execSync(`cd ${localPath} && refresh`);
         }, '30000');
