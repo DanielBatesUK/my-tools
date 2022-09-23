@@ -33,11 +33,13 @@ function routeGitHubWebhook(req, res) {
       console.log({ gitPull });
       try {
         // Refresh Glitch after 30secs
+        console.log('Refreshing Glitch after 30secs');
         setTimeout(() => {
           execSync(`cd ${localPath} && refresh`);
         }, '30000');
       } catch (error) {
         // Do nothing as not on glitch
+        console.log('Refresh command failed (are you on Glitch?)');
       }
     } else {
       console.log('Default branch check mismatch:', { localBranch, gitHubPushBranch, gitHubDefaultBranch });
