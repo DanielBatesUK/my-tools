@@ -8,7 +8,7 @@
 
 ## Description
 
- A simple node.js express server with with useful tools I've built and used for myself over time. I have had a lot some of these tools for a very long time. Some (okay most) are so old that I've forgotten why I made them. Nonetheless, I gave myself the exercise of converting the tools to run on a node.js express server. I'm hobbyist, so I've made a lot of things just for the sake of it.
+A simple node.js express server with with useful tools I've built and used for myself over time. I have had a lot some of these tools for a very long time. Some (okay most) are so old that I've forgotten why I made them. Nonetheless, I gave myself the exercise of converting the tools to run on a node.js express server. I'm hobbyist, so I've made a lot of things just for the sake of it.
 
 ## Installation
 
