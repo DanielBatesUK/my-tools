@@ -8,7 +8,7 @@
 
 ## Description
 
- A simple node.js express server with with useful tools I've built and used for myself over time.
+ A simple node.js express server with with useful tools I've built and used for myself over time. I have had a lot some of these tools for a very long time. Some (okay most) are so old that I've forgotten why I made them. Nonetheless, I gave myself the exercise of converting the tools to run on a node.js express server. I'm hobbiest, so I've made a lot of things just for the sake of it.
 
 ## Installation
 
@@ -52,7 +52,18 @@ Just a simple page. Nothing really to see here. Basically just a "Hello World".
 
 ### Hashes
 
+```Shell
+http://localhost:3000/hashes
+```
+
+Something I made this for messing around md5 hashes a long time ago. I've long since fogotten what I actually used it for. But it's here anyways
+
 ### Video Capture
+
+```Shell
+http://localhost:3000/video-capture
+```
+This is one of my most recent tools. The gist, I have a Chromecast plugged into the HDMI port on my monitor. Ocasionally I'd like to have content playing on my Chromecast in a window on my desktop. So I got myself one of them cheap USB HDMI capture devices and a HDMI splitter from Amazon. Then using this webpage I can view the USB HDMI capture device's output (the Chromecast). You can select any other video and audio input device for that matter. Change the settings via the cog in the top left corner (move mouse to show).
 
 ## Demo
 
