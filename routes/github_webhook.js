@@ -33,7 +33,7 @@ function routeGitHubWebhook(req, res) {
       console.log({ gitPull });
       try {
         const refresh = execSync(`cd ${localPath} && refresh`);
-        console.log({ refresh }); // for Glitch.com demo restart
+        console.log({ refresh }); // for Glitch.com demo
       } catch (error) {
         // Do nothing
       }
