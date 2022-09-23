@@ -66,12 +66,12 @@ http://localhost:3000/video-capture
 
 This is one of my most recent tools. The gist, I have a Chromecast plugged into the HDMI port on my monitor. Occasionally I'd like to have content playing on my Chromecast in a window on my desktop. So I got myself one of them cheap USB HDMI capture devices and a HDMI splitter from Amazon. Then using this webpage I can view the USB HDMI capture device's output (the Chromecast). You can select any other video and audio input device for that matter. Change the settings via the cog in the top left corner (move mouse to show).
 
-### More to come...
+### More to come
 
-I'd add more stuff here, as and when I get around to it. But I wouldn't hold out much hope of any of it being usesful to you. Here's my current todo list:
+I'd add more stuff here, as and when I get around to it. But I wouldn't hold out much hope of any of it being useful to you. Here's my current todo list:
 
 - Get the age of something
-- Apect ratio calculator
+- Aspect ratio calculator
 - Colour stepper
 - LAN device IPs
 - Lorem Ipsum
@@ -79,7 +79,7 @@ I'd add more stuff here, as and when I get around to it. But I wouldn't hold out
 
 ## GitHub Webhooks
 
-I've added a GitHub webhook handler. This is for the demo that hosted on https://glitch.com (link below). This is to keep the my-tools demo up to date. As it pulls whenever a push is made to the default branch. If you want to use this, the you will need a `GITHUB_WEBHOOK_SECRET` env variable; that matches the secret in your webhook on your repo.
+I've added a GitHub webhook handler. This is for the demo that hosted on <https://glitch.com> (link below). This is to keep the my-tools demo up to date. As it pulls whenever a push is made to the default branch. If you want to use this, the you will need a `GITHUB_WEBHOOK_SECRET` env variable; that matches the secret in your webhook on your repo.
 
 ## Demo
 
