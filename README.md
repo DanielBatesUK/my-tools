@@ -84,10 +84,10 @@ I've added a GitHub webhook handler. This is for the demo that is hosted on <htt
 
 ## Demo
 
-You can look at a demo here: <https://danielbatesuk-my-tools.glitch.me/>
-- [/index](https://danielbatesuk-my-tools.glitch.me/) - Index
-- [/hashes](https://danielbatesuk-my-tools.glitch.me/hashes) - Hashes
-- [/video-capture](https://danielbatesuk-my-tools.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://danielbatesuk-my-tools.glitch.me/video-capture.html) version)
+You can look at a demo here: <https://my-tools-demo.glitch.me/>
+- [/index](https://my-tools-demo.glitch.me/) - Index
+- [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
+- [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)
 
 ## Author
 
