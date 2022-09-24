@@ -67,7 +67,7 @@ app.all('/video-capture', routeVideoCapture);
 
 // ################################################################################################
 
-// HTTP request for GitHub Webhook (for auto-fetching)
+// HTTP request for GitHub Webhook (for auto-pull)
 app.post('/github-webhook', routeGitHubWebhook);
 
 // ################################################################################################
