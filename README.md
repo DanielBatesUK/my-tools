@@ -80,11 +80,14 @@ I'd add more stuff here, as and when I get around to it. But I wouldn't hold out
 
 ## GitHub Webhooks
 
-I've added a GitHub webhook handler. This is for the demo that is hosted on <https://glitch.com> (see link below). This is to keep the my-tools demo up to date. As it pulls whenever a push is made to the default branch. If you want to use this, the you will need a `GITHUB_WEBHOOK_SECRET` env variable; that matches the secret in your webhook on your repo.
+I've added a GitHub webhook handler. This is for the demo that is hosted on <https://glitch.com> (see link below). This is to keep the my-tools demo up to date. As it pulls whenever a push is made to the default branch. If you want to use this, then you will need to run your server with a `GITHUB_WEBHOOK_SECRET="[your-seceret]"` environment variable; that matches the secret you used when creating the webhook for your repo (Settings -> Webhooks).
 
 ## Demo
 
 You can look at a demo here: <https://danielbatesuk-my-tools.glitch.me/>
+- [/index](https://danielbatesuk-my-tools.glitch.me/) - Index
+- [/hashes](https://danielbatesuk-my-tools.glitch.me/hashes) - Hashes
+- [/video-capture](https://danielbatesuk-my-tools.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://danielbatesuk-my-tools.glitch.me/video-capture.html) version)
 
 ## Author
 
