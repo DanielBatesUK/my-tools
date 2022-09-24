@@ -3,6 +3,7 @@
 .vscode/
 process.json
 .eslintrc.json
+.prettierrc
 
 # Default node .gitignore #########################################################################
 
