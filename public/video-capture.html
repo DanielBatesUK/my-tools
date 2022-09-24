@@ -1,5 +1,5 @@
-
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title></title>
     <meta charset="utf-8" />
@@ -15,11 +15,11 @@
         --border-color: rgba(255,255,255,0.33);
         --background-color: rgba(255,255,255,0.25);
         --background-darken: rgba(0,0,0,0.05);
-        
+
         --heading-background-color: rgba(255,255,255,0.95);
 
         --link-color: rgba(51,140,205,1);
-        
+
         /* Use 500 colours */
         --button-enabled-background-color: rgba(76,175,80,0.66);
         --button-enabled-foreground-color: rgba(255,255,255,0.66);
@@ -149,7 +149,7 @@
       #settings-button svg {
         height:100%;
         width:100%;
-        
+
       }
       #settings-button:hover {
         cursor: pointer;
@@ -191,20 +191,20 @@
 
       /* Track */
       .page::-webkit-scrollbar-track {
-        box-shadow: var(--box-shadow); 
+        box-shadow: var(--box-shadow);
         border-radius: var(--border-radius);
         background: var(--background-color)
       }
-      
+
       /* Handle */
       .page::-webkit-scrollbar-thumb {
-        background: var(--text-color); 
+        background: var(--text-color);
         border-radius: var(--border-radius);
       }
 
       /* Handle on hover */
       .page::-webkit-scrollbar-thumb:hover {
-        background: var(--text-color); 
+        background: var(--text-color);
       }
 
       .page div.inline-block {
@@ -233,24 +233,28 @@
         width:auto;
         margin:0;
       }
-
     </style>
   </head>
-  <body><meta name="theme-color" content="#101010">
+  <body>
+    <meta name="theme-color" content="#101010" />
     <div id="container">
       <video autoplay="true" id="video-player"></video>
     </div>
     <div id="settings-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <g>
-          <path fill="currentColor" d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z">
-          </path>
+          <path
+            fill="currentColor"
+            d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"
+          ></path>
         </g>
       </svg>
     </div>
     <div class="page" id="controls">
       <h1>Video Capture Settings</h1>
-      <h3>Video Settings<small>current window resolution <span id="window-size">unknown</span></small></h3>
+      <h3>
+        Video Settings<small>current window resolution <span id="window-size">unknown</span></small>
+      </h3>
       <div class="inline-block">
         <h3>Video device</h3>
         <label>Video device:</label>
@@ -323,17 +327,25 @@
       <div class="block" style="max-width: 50%;">
         <p id="url" style="overflow-wrap: anywhere;">URL goes here</p>
       </div>
-      <input type="button" value="Copy URL" onclick="navigator.clipboard.writeText(document.getElementById('url').textContent);" />
-      <input type="button" value="Goto URL" onclick="window.location.href = document.getElementById('url').textContent;" />
+      <input
+        type="button"
+        value="Copy URL"
+        onclick="navigator.clipboard.writeText(document.getElementById('url').textContent);"
+      />
+      <input
+        type="button"
+        value="Goto URL"
+        onclick="window.location.href = document.getElementById('url').textContent;"
+      />
     </div>
     <script type="text/javascript">
       // Variables
-      let video = document.querySelector("#video-player");
+      let video = document.querySelector('#video-player');
       let tracks;
       let mediaDevicesObject = {};
       let parametersObject = {};
       let settingsTimeout;
-      const vResolutions = {'2160': 3840, '1080': 1920, '720': 1280, '480':640};
+      const vResolutions = { 2160: 3840, 1080: 1920, 720: 1280, 480: 640 };
       const urlParams = Object.fromEntries(new URLSearchParams(location.search));
       console.log('urlParams', urlParams);
 
@@ -342,9 +354,11 @@
         try {
           console.log('Setting mediaDevicesObject...');
           const fetchedDevices = await navigator.mediaDevices.enumerateDevices();
-          fetchedDevices.filter(obj => obj.kind==='audioinput' || obj.kind==='videoinput').forEach((device) => {
-            mediaDevicesObject[device.label] = { kind: device.kind, id: device.deviceId, label: device.label }
-          });
+          fetchedDevices
+            .filter((obj) => obj.kind === 'audioinput' || obj.kind === 'videoinput')
+            .forEach((device) => {
+              mediaDevicesObject[device.label] = { kind: device.kind, id: device.deviceId, label: device.label };
+            });
           console.log('mediaDevicesObject', mediaDevicesObject);
         } catch (error) {
           console.error(error);
@@ -357,17 +371,18 @@
           console.log('Setting media device controls...');
           Object.keys(mediaDevicesObject).forEach((key) => {
             // Adding option to selects
-            console.log(`Adding '${mediaDevicesObject[key].label}' device to '${mediaDevicesObject[key].kind}' controls.`);
+            console.log(
+              `Adding '${mediaDevicesObject[key].label}' device to '${mediaDevicesObject[key].kind}' controls.`
+            );
             const select = document.getElementById(mediaDevicesObject[key].kind);
             const option = document.createElement('option');
-            option.text  = mediaDevicesObject[key].label;
+            option.text = mediaDevicesObject[key].label;
             option.value = mediaDevicesObject[key].label;
             select.appendChild(option);
           });
         } catch (error) {
           console.error(error);
         }
-
       }
 
       // Get parameters from url or set default
@@ -375,14 +390,14 @@
         try {
           console.log('Setting parameters...');
           parametersObject = {
-            a: (urlParams.a ? urlParams.a : document.getElementById('audioinput').options[0].innerText),
-            ac: (urlParams.ac ? Number(urlParams.ac) : 2),
-            as: (urlParams.as ? Number(urlParams.as) : 16),
-            ar: (urlParams.ar ? Number(urlParams.ar) : 44100),
-            v: (urlParams.v ? urlParams.v : document.getElementById('videoinput').options[0].innerText),
-            vw: (urlParams.vw ? Number(urlParams.vw) : 1280),
-            vh: (urlParams.vh ? Number(urlParams.vh) : 720),
-            vf: (urlParams.vf ? Number(urlParams.vf) : 30)
+            a: urlParams.a ? urlParams.a : document.getElementById('audioinput').options[0].innerText,
+            ac: urlParams.ac ? Number(urlParams.ac) : 2,
+            as: urlParams.as ? Number(urlParams.as) : 16,
+            ar: urlParams.ar ? Number(urlParams.ar) : 44100,
+            v: urlParams.v ? urlParams.v : document.getElementById('videoinput').options[0].innerText,
+            vw: urlParams.vw ? Number(urlParams.vw) : 1280,
+            vh: urlParams.vh ? Number(urlParams.vh) : 720,
+            vf: urlParams.vf ? Number(urlParams.vf) : 30,
           };
           console.log('parametersObject', parametersObject);
         } catch (error) {
@@ -392,7 +407,7 @@
 
       // Setting controls to reflect parameters
       function setControls() {
-        try{
+        try {
           console.log('Setting controls...');
           // Audio controls
           document.getElementById('audioinput').value = parametersObject.a;
@@ -411,9 +426,15 @@
 
       // Set controls URL to reflect parameters
       function setControlsURL() {
-        try{
+        try {
           console.log('Setting controls URL...');
-          const controlsURL = `${window.location.protocol}//${window.location.hostname}${window.location.pathname}?a=${encodeURIComponent(parametersObject.a)}&ac=${parametersObject.ac}&as=${parametersObject.as}&ar=${parametersObject.ar}&v=${encodeURIComponent(parametersObject.v)}&vw=${parametersObject.vw}&vh=${parametersObject.vh}&vf=${parametersObject.vf}`
+          const controlsURL = `${window.location.protocol}//${window.location.hostname}${
+            window.location.pathname
+          }?a=${encodeURIComponent(parametersObject.a)}&ac=${parametersObject.ac}&as=${parametersObject.as}&ar=${
+            parametersObject.ar
+          }&v=${encodeURIComponent(parametersObject.v)}&vw=${parametersObject.vw}&vh=${parametersObject.vh}&vf=${
+            parametersObject.vf
+          }`;
           document.getElementById('url').textContent = controlsURL;
           console.log('controlsURL', controlsURL);
         } catch (error) {
@@ -423,16 +444,18 @@
 
       // Set controls current window resolution
       function setControlsWindowResolution() {
-        document.getElementById('window-size').textContent = `${document.getElementById('video-player').clientWidth}x${document.getElementById('video-player').clientHeight}`;
+        document.getElementById('window-size').textContent = `${document.getElementById('video-player').clientWidth}x${
+          document.getElementById('video-player').clientHeight
+        }`;
       }
-      window.onresize = setControlsWindowResolution;  
+      window.onresize = setControlsWindowResolution;
 
       // Stop media stream if playing
       async function stopMediaStream() {
         try {
           console.log('Stopping media stream...');
-          if(typeof tracks !== 'undefined') {
-            tracks.forEach( (track) => {
+          if (typeof tracks !== 'undefined') {
+            tracks.forEach((track) => {
               track.stop();
             });
             video.srcObject = null;
@@ -443,50 +466,52 @@
         } catch (error) {
           console.error(error);
         }
-      }          
+      }
 
       // Start media stream
       async function startMediaStream() {
         try {
           await stopMediaStream();
           console.log('Starting media stream...');
-          const constraints = { 
+          const constraints = {
             audio: {
               deviceId: {
-                exact: mediaDevicesObject[parametersObject.a].id
+                exact: mediaDevicesObject[parametersObject.a].id,
               },
               channelCount: parametersObject.ac,
               sampleSize: parametersObject.as,
               sampleRate: parametersObject.ar,
               echoCancellation: false,
               noiseSuppression: false,
-              autoGainControl: false
+              autoGainControl: false,
             },
             video: {
               deviceId: {
-                exact: mediaDevicesObject[parametersObject.v].id
+                exact: mediaDevicesObject[parametersObject.v].id,
               },
               width: parametersObject.vw,
               height: parametersObject.vh,
-              frameRate: parametersObject.vf
-            }
+              frameRate: parametersObject.vf,
+            },
           };
           console.log('constraints', constraints);
           stream = await navigator.mediaDevices.getUserMedia(constraints);
           video.srcObject = stream;
           tracks = stream.getTracks();
-          document.title = `Video Capture - ${mediaDevicesObject[parametersObject.v]['label']} - ${parametersObject.vw}x${parametersObject.vh} ${parametersObject.vf}fps`;
+          document.title = `Video Capture - ${mediaDevicesObject[parametersObject.v]['label']} - ${
+            parametersObject.vw
+          }x${parametersObject.vh} ${parametersObject.vf}fps`;
         } catch (error) {
           console.error(error);
-          document.title = "Video Capture - Error";
+          document.title = 'Video Capture - Error';
         }
       }
 
       // Read controls and set parameters
       function readControls() {
         try {
-            console.log('Reading controls and setting parameters...')
-            parametersObject = {
+          console.log('Reading controls and setting parameters...');
+          parametersObject = {
             a: document.getElementById('audioinput').value,
             ac: Number(document.querySelector('input[name="ac"]:checked').value),
             as: Number(document.querySelector('input[name="as"]:checked').value),
@@ -494,13 +519,12 @@
             v: document.getElementById('videoinput').value,
             vw: vResolutions[document.querySelector('input[name="vh"]:checked').value],
             vh: Number(document.querySelector('input[name="vh"]:checked').value),
-            vf: Number(document.querySelector('input[name="vf"]:checked').value)
+            vf: Number(document.querySelector('input[name="vf"]:checked').value),
           };
           console.log('parametersObject', parametersObject);
         } catch (error) {
           console.error(error);
         }
-
       }
 
       // Controls changed so update stream
@@ -512,7 +536,7 @@
           await startMediaStream();
         } catch (error) {
           console.error(error);
-        }        
+        }
       }
 
       // Start script
@@ -528,7 +552,7 @@
 
       // Settings button on/off/low
       function settingsButtonDisplay(state) {
-        switch(state) {    
+        switch (state) {
           case 'on': // Button on
             document.getElementById('settings-button').style.opacity = 1;
             document.body.style.cursor = 'default';
@@ -548,19 +572,19 @@
 
       // Controls window open/close
       function controlsDisplay(state) {
-        if(state === 'off') {
+        if (state === 'off') {
           // Close controls window
           document.getElementById('controls').style.display = 'none';
           document.getElementById('controls').style.opacity = 0;
-          }
-        if(state === 'on') {
+        }
+        if (state === 'on') {
           // Update change for audio and video select controls
           document.getElementById('audioinput').onchange = controlsChange;
           document.getElementById('videoinput').onchange = controlsChange;
           // Open controls window
-          document.getElementById('controls').style.display = 'block'
+          document.getElementById('controls').style.display = 'block';
           document.getElementById('controls').style.opacity = 1;
-        };
+        }
       }
 
       // Settings button timeout
@@ -569,10 +593,10 @@
           // Timeout on
           clearTimeout(settingsTimeout);
           settingsTimeout = setTimeout(() => {
-            if(document.getElementById('settings-button').style.opacity !== '1') {
+            if (document.getElementById('settings-button').style.opacity !== '1') {
               settingsButtonDisplay('off');
             } else {
-              settingsButtonTimeout(true)
+              settingsButtonTimeout(true);
             }
           }, 3000);
         } else {
@@ -583,7 +607,7 @@
 
       // Move mouse
       document.body.addEventListener('mousemove', (e) => {
-        if(document.getElementById('settings-button').style.opacity !== '1') {
+        if (document.getElementById('settings-button').style.opacity !== '1') {
           settingsButtonTimeout(true);
           settingsButtonDisplay('low');
         } else {
@@ -598,24 +622,24 @@
 
       // Settings-button mouse out
       document.getElementById('settings-button').addEventListener('mouseout', (e) => {
-        if(document.getElementById('controls').style.display !== 'block') settingsButtonDisplay('low');
+        if (document.getElementById('controls').style.display !== 'block') settingsButtonDisplay('low');
       });
 
       // Settings-button click
       document.getElementById('settings-button').addEventListener('click', (e) => {
-        if(document.getElementById('controls').style.display !== 'block') {
-          settingsButtonDisplay('on')
+        if (document.getElementById('controls').style.display !== 'block') {
+          settingsButtonDisplay('on');
           controlsDisplay('on');
         } else {
-          settingsButtonDisplay('off')
+          settingsButtonDisplay('off');
           controlsDisplay('off');
         }
       });
 
       // Video-player close controls if open
       document.getElementById('video-player').addEventListener('click', (e) => {
-        if(document.getElementById('controls').style.display === 'block') {
-          settingsButtonDisplay('off')
+        if (document.getElementById('controls').style.display === 'block') {
+          settingsButtonDisplay('off');
           controlsDisplay('off');
         }
       });
