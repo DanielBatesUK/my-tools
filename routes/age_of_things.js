@@ -1,20 +1,16 @@
 // ################################################################################################
 
-// Route - Index
-function routeIndex(req, res) {
+// Route - Age of things
+function routeAgeOfThings(req, res) {
   try {
     console.log(
-      `Processing HTTP ${req.method} request for '${req.path}' as 'index'`
+      `Processing HTTP ${req.method} request for '${req.path}' as 'age-of-things'`
     );
-    const pageOptions = {
-      page_title: 'Index',
-      page_content: 'Hello World!',
-    };
-    res.render('index', pageOptions);
+    res.render('age_of_things');
     res.end();
   } catch (error) {
     console.error(error);
-    res.send('Index error');
+    res.send('Age-of-things error');
     res.end();
   }
 }
@@ -22,4 +18,4 @@ function routeIndex(req, res) {
 // ################################################################################################
 
 // Exports
-export default routeIndex;
+export default routeAgeOfThings;

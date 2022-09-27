@@ -30,6 +30,7 @@ import routeIndex from './routes/index.js';
 import routeHashes from './routes/hashes.js';
 import routeVideoCapture from './routes/video_capture.js';
 import routeGitHubWebhook from './routes/github_webhook.js';
+import routeAgeOfThings from './routes/age_of_things.js';
 
 // ################################################################################################
 
@@ -58,6 +59,9 @@ app.all('*', (req, res, next) => {
 
 // HTTP request for index page
 app.get('/', routeIndex);
+
+// HTTP request for video capture page
+app.all('/age-of-things', routeAgeOfThings);
 
 // HTTP request for hashes page
 app.all('/hashes', routeHashes);

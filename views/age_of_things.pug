@@ -1,0 +1,201 @@
+doctype html
+html(lang='en')
+  head
+    title Age of Things
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='./css/fonts.css')
+    link(rel='stylesheet', href='./css/default.css')
+    link(rel='icon' type='image/png' href='./images/timer-sand-complete.png')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+  body
+    div(class='page')
+      h1 Age of Things
+      div
+        div(class='inline-block')
+          h3 Starting Date/Time
+          div(id='start_supported' style='display:inline')
+            input(type='datetime-local' step=1 name='start_datetime' id='start_datetime')
+          div(id='start_unsupported' style='display:inline')
+            input(type='text' name='start_date' id='start_date' maxlength=2 size=2 placeholder='DD')
+            label /
+            input(type='text' name='start_month' id='start_month' maxlength=2 size=2 placeholder='MM')
+            label /
+            input(type='text' name='start_year' id='start_year' maxlength=4 size=4 placeholder='YYYY')
+            label , 
+            input(type='text' name='start_hours' id='start_hours' maxlength=2 size=2 placeholder='hh')
+            label : 
+            input(type='text' name='start_minutes' id='start_minutes' maxlength=2 size=2 placeholder='mm')
+            label : 
+            input(type='text' name='start_seconds' id='start_seconds' maxlength=2 size=2 placeholder='ss')
+            label &nbsp; 
+          input(type='submit' value='Get current age' onclick='getAge( getDateTime("start"), new Date(), "current date/time" )')
+        div(class='inline-block')
+          h3 Ending Date/Time
+          div(id='end_supported' style='display:inline')
+            input(type='datetime-local' step=1 name='end_datetime' id='end_datetime')
+          div(id='end_unsupported' style='display:inline')
+            input(type='text' name='end_date' id='end_date' maxlength=2 size=2 placeholder='DD')
+            label /
+            input(type='text' name='end_month' id='end_month' maxlength=2 size=2 placeholder='MM')
+            label /
+            input(type='text' name='end_year' id='end_year' maxlength=4 size=4 placeholder='YYYY')
+            label , 
+            input(type='text' name='end_hours' id='end_hours' maxlength=2 size=2 placeholder='hh')
+            label : 
+            input(type='text' name='end_minutes' id='end_minutes' maxlength=2 size=2 placeholder='mm')
+            label : 
+            input(type='text' name='end_seconds' id='end_seconds' maxlength=2 size=2 placeholder='ss')
+            label &nbsp; 
+          input(type='submit' value='Get start and end age' onclick='getAge( getDateTime("start"), getDateTime("end") );')
+      div(style='margin-top: var(--border-radius)')  
+        table
+          tr
+            th(colspan=2) Age
+              small(id='output_heading') current date
+          tr
+            th Milliseconds
+              small 1/1000 of a second
+            td(id='output_ms')
+          tr
+            th Seconds
+              small 1000 milliseconds
+            td(id='output_seconds')
+          tr
+            th Minutes
+              small 60 seconds
+            td(id='output_minutes')
+          tr
+            th Hours
+              small 60 minutes
+            td(id='output_hours')
+          tr
+            th Days
+              small 24 hours
+            td(id='output_days')
+          tr
+            th Weeks
+              small 7 days
+            td(id='output_weeks')
+          tr
+            th Months
+              small 31 days
+            td(id='output_months')
+          tr
+            th Years
+              small 365 days
+            td(id='output_years')
+          tr
+            th Calendar Age
+            td(id='output_calendar')
+    script.
+
+      function pad(num, size) {
+        num = num.toString();
+        while (num.length < size) num = '0' + num;
+        return num;
+      }
+
+      function pluralWords(number, word) {
+        return `${(number === 0) ? '' : (number >= 2) ? `${number} ${word}s` : `${number} ${word}`}`;
+      }
+      
+      function isDateTimeLocalSupported () {
+        let input = document.createElement('input');
+        const value = 'a';
+        input.setAttribute('type', 'datetime-local');
+        input.setAttribute('value', value);
+        return (input.value !== value);
+      };
+
+      function getDateTime(input = 'start') {
+        if(document.getElementById('start_supported').innerHTML !== '') {
+          // Supported
+          const gotDateTime = new Date(document.getElementById(`${input}_datetime`).value);
+          console.log('getDateTime:', input, { gotDateTime });
+          return gotDateTime;
+        } else {
+          // Unsupported
+          const year = pad(Number(document.getElementById(`${input}_year`).value), 4);
+          const month = pad(Number(document.getElementById(`${input}_month`).value), 2);
+          const date = pad(Number(document.getElementById(`${input}_date`).value), 2);
+          const hours = pad(Number(document.getElementById(`${input}_hours`).value), 2);
+          const minutes = pad(Number(document.getElementById(`${input}_minutes`).value), 2);
+          const seconds = pad(Number(document.getElementById(`${input}_seconds`).value), 2);
+          const gotDateTime = new Date(`${year}-${month}-${date}T${hours}:${minutes}:${seconds}`);
+          console.log('getDateTime:', input, { gotDateTime });
+          return gotDateTime;
+        }
+      }
+
+      function getAge(startDate = getDateTime('start'), endDate = getDateTime('end'), type = 'between starting and ending date/times') {
+        startDate.setMinutes(startDate.getMinutes() - startDate.getTimezoneOffset());
+        endDate.setMinutes(endDate.getMinutes() - endDate.getTimezoneOffset());
+        console.log('getAge:', { startDate, endDate });
+        // Get difference
+        const diffMS = Math.abs(startDate - endDate);
+        const diffSecs = diffMS / 1000;
+        const diffMins = diffMS / (1000 * 60);
+        const diffHours = diffMS / (1000 * 60 * 60);
+        const diffDays = diffMS / (1000 * 60 * 60 * 24);
+        const diffWeeks = diffMS / (1000 * 60 * 60 * 24 * 7);
+        const diffMonths = diffMS / (1000 * 60 * 60 * 24 * 31);
+        const diffYears = diffMS / (1000 * 60 * 60 * 24 * 365);
+        const diffDate = new Date(diffMS);
+        diffDate.setMinutes(diffDate.getMinutes() + diffDate.getTimezoneOffset());
+        console.log('getAge:', 'Difference:', { diffMS, diffSecs, diffMins, diffHours, diffDays, diffWeeks, diffMonths, diffYears, diffDate});
+        // Set values
+        document.getElementById('output_heading').innerHTML = type;
+        document.getElementById('output_ms').innerHTML = diffMS;
+        document.getElementById('output_seconds').innerHTML = diffSecs;
+        document.getElementById('output_minutes').innerHTML = diffMins;
+        document.getElementById('output_hours').innerHTML = diffHours;
+        document.getElementById('output_days').innerHTML = diffDays;
+        document.getElementById('output_weeks').innerHTML = diffWeeks;
+        document.getElementById('output_months').innerHTML = diffMonths;
+        document.getElementById('output_years').innerHTML = diffYears;
+        // Calendar Age
+        const calYears = Math.abs(diffDate.getFullYear() - 1970);
+        const calMonths = Math.abs(diffDate.getMonth());
+        const calDays = Math.abs(diffDate.getDate() - 1);
+        const calHours = Math.abs(diffDate.getHours());
+        const calMinutes = Math.abs(diffDate.getMinutes());
+        const calSeconds = Math.abs(diffDate.getSeconds());
+        console.log('getAge:', 'Calendar-Age:', { calYears, calMonths, calDays, calHours, calMinutes, calSeconds });
+        const calOutput = ([calYears, calMonths, calDays, calHours, calSeconds].reduce((a, b) => a + b, 0)) === 0 ? 'No time' : `${pluralWords(calYears,'Year')} ${pluralWords(calMonths,'Month')} ${pluralWords(calDays,'Day')} ${pluralWords(calHours,'Hour')} ${pluralWords(calMinutes,'Minute')} ${pluralWords(calSeconds,'Second')}`;
+        document.getElementById('output_calendar').innerHTML = calOutput;
+      }
+
+      window.onload = function(){
+        // Initial current time
+        const currentDate = new Date();
+        // Datetime-local supported
+        const dateTimeLocalSupported = isDateTimeLocalSupported();
+        console.log({ dateTimeLocalSupported });
+        if(dateTimeLocalSupported) {
+          // Supported
+        currentDate.setMinutes(currentDate.getMinutes() - currentDate.getTimezoneOffset());
+          document.getElementById('start_unsupported').innerHTML = '';
+          document.getElementById('start_datetime').value = currentDate.toISOString().slice(0, 19);
+          document.getElementById('end_unsupported').innerHTML = '';
+          document.getElementById('end_datetime').value = currentDate.toISOString().slice(0, 19);
+        } else {
+          //Unsupported
+          document.getElementById('start_supported').innerHTML = '';
+          document.getElementById('start_year').value = pad(currentDate.getFullYear(), 4);
+          document.getElementById('start_month').value = pad((currentDate.getMonth() + 1), 2);
+          document.getElementById('start_date').value = pad(currentDate.getDate(), 2);
+          document.getElementById('start_hours').value = pad(currentDate.getHours(), 2);
+          document.getElementById('start_minutes').value = pad(currentDate.getMinutes(), 2);
+          document.getElementById('start_seconds').value = pad(currentDate.getSeconds(), 2);
+          document.getElementById('end_supported').innerHTML = '';
+          document.getElementById('end_year').value = pad(currentDate.getFullYear(), 4);
+          document.getElementById('end_month').value = pad((currentDate.getMonth() + 1), 2);
+          document.getElementById('end_date').value = pad(currentDate.getDate(), 2);
+          document.getElementById('end_hours').value = pad(currentDate.getHours(), 2);
+          document.getElementById('end_minutes').value = pad(currentDate.getMinutes(), 2);
+          document.getElementById('end_seconds').value = pad(currentDate.getSeconds(), 2);
+        }  
+        console.log('onload:', { currentDate, 'isoString': currentDate.toISOString().slice(0, 19)});
+        getAge(currentDate, currentDate, 'current date/time');
+        }
+
