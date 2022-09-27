@@ -50,13 +50,13 @@ http://localhost:3000/
 
 Just a simple page. Nothing really to see here. Basically just a "Hello World".
 
-### Age-of-Things
+### Age of Things
 
 ```Shell
 http://localhost:3000/age-of-things
 ```
 
-Get the age of something now or between two date/times.
+Get the age of something now or between two start and end date/times.
 
 ### Hashes
 
@@ -93,7 +93,7 @@ I've added a GitHub webhook handler. This is for the demo that is hosted on <htt
 
 You can look at a demo here: <https://my-tools-demo.glitch.me/>
 - [/index](https://my-tools-demo.glitch.me/) - Index
-- [/age-of-things](https://my-tools-demo.glitch.me/age-of-things) - Age-of-Things
+- [/age-of-things](https://my-tools-demo.glitch.me/age-of-things) - Age of Things
 - [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
 - [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)
 
