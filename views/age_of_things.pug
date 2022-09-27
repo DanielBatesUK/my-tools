@@ -11,11 +11,11 @@ html(lang='en')
     div(class='page')
       h1 Age of Things
       div
-        div(class='inline-block')
+        div(id='starting' class='inline-block')
           h3 Starting Date/Time
-          div(id='start_supported' style='display:inline')
+          div(id='start_supported' style='display:inline' class='input_div')
             input(type='datetime-local' step=1 name='start_datetime' id='start_datetime')
-          div(id='start_unsupported' style='display:inline')
+          div(id='start_unsupported' style='display:inline' class='input_div')
             input(type='text' name='start_date' id='start_date' maxlength=2 size=2 placeholder='DD')
             label /
             input(type='text' name='start_month' id='start_month' maxlength=2 size=2 placeholder='MM')
@@ -28,12 +28,12 @@ html(lang='en')
             label : 
             input(type='text' name='start_seconds' id='start_seconds' maxlength=2 size=2 placeholder='ss')
             label &nbsp; 
-          input(type='submit' value='Get current age' onclick='getAge( getDateTime("start"), new Date(), "current date/time" )')
-        div(class='inline-block')
+          input(type='submit' value='Get current age' onclick='getAge( getDateTime("start"), new Date(), "current date/time" );')
+        div(id='ending' class='inline-block')
           h3 Ending Date/Time
-          div(id='end_supported' style='display:inline')
+          div(id='end_supported' style='display:inline' class='input_div')
             input(type='datetime-local' step=1 name='end_datetime' id='end_datetime')
-          div(id='end_unsupported' style='display:inline')
+          div(id='end_unsupported' style='display:inline' class='input_div')
             input(type='text' name='end_date' id='end_date' maxlength=2 size=2 placeholder='DD')
             label /
             input(type='text' name='end_month' id='end_month' maxlength=2 size=2 placeholder='MM')
@@ -99,7 +99,7 @@ html(lang='en')
         return `${(number === 0) ? '' : (number >= 2) ? `${number} ${word}s` : `${number} ${word}`}`;
       }
       
-      function istartDateTimeLocalSupported () {
+      function isDateTimeLocalSupported () {
         let input = document.createElement('input');
         const value = 'a';
         input.setAttribute('type', 'datetime-local');
@@ -169,7 +169,7 @@ html(lang='en')
         // Initial current time
         const cDate = new Date();
         // Datetime-local supported
-        const dateTimeLocalSupported = istartDateTimeLocalSupported();
+        const dateTimeLocalSupported = isDateTimeLocalSupported();
         console.log({ dateTimeLocalSupported });
         if(dateTimeLocalSupported) {
           // Supported
@@ -197,5 +197,10 @@ html(lang='en')
         }  
         console.log('onload:', { cDate, 'isoString': cDate.toISOString().slice(0, 19)});
         getAge(cDate, cDate, 'current date/time');
-        }
+        // Key Press (enter)
+        const inputStart = document.getElementById('starting');
+        inputStart.addEventListener('keyup', (event) => { if(event.code === 'Enter') getAge(getDateTime("start"), new Date(), "current date/time"); });
+        const inputEnd = document.getElementById('ending');
+        inputEnd.addEventListener('keyup', (event) => { if(event.code === 'Enter') getAge(getDateTime("start"), getDateTime("end"), "current date/time"); });
+      }
 
