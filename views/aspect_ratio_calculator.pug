@@ -1,0 +1,55 @@
+doctype html
+html(lang='en')
+  include head.pug
+  +head("Aspect Ratio Calculator", "aspect-ratio.png")
+  body
+    .page
+      h1 Aspect Ratio Calculator
+      div
+        div
+          #width.inline-block
+            h3 Width
+            input#iWidth(type='number', value=1920)
+            input(type='submit', value='Calculate via width', onclick='calculate("width");')
+          #height.inline-block
+            h3 Height
+            input#iHeight(type='number', value=1080)
+            input(type='submit', value='Calculate via height', onclick='calculate("height");')
+        div
+          .inline-block(style='margin-top: var(--border-radius)')
+            h3 Aspect Ratio
+            input#iHorizontal(type='number', value=16)
+            span(style='margin: 0 var(--border-radius) 0 0') :
+            input#iVertical(type='number', value=9)
+      #results(style='margin-top: var(--border-radius)')
+        .inline-block
+          h3 Results
+          input#rWidth(type='text', placeholder='width', readonly)
+          span(style='margin: 0 var(--border-radius) 0 0') x
+          input#rHeight(type='text', placeholder='height', readonly)
+          svg.copy(
+            xmlns='http://www.w3.org/2000/svg',
+            viewBox='0 0 24 24',
+            onclick='navigator.clipboard.writeText(document.getElementById(\'rWidth\').value + \'x\' + document.getElementById(\'rHeight\').value);'
+          )
+            title Copy
+            path(fill='currentColor', d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z')
+    script.
+      function calculate(type) {
+        if (type === 'width') {
+          document.getElementById('rWidth').value = document.getElementById('iWidth').value;
+          document.getElementById('rHeight').value = (document.getElementById('iWidth').value / document.getElementById('iHorizontal').value) * document.getElementById('iVertical').value;
+        } else {
+          document.getElementById('rWidth').value = (document.getElementById('iHeight').value / document.getElementById('iVertical').value) * document.getElementById('iHorizontal').value;
+          document.getElementById('rHeight').value = document.getElementById('iHeight').value;
+        }
+      }
+
+      window.onload = function () {
+        document.getElementById('width').addEventListener('keyup', (event) => {
+          if (event.code === 'Enter') calculate('width');
+        });
+        document.getElementById('height').addEventListener('keyup', (event) => {
+          if (event.code === 'Enter') calculate('height');
+        });
+      };

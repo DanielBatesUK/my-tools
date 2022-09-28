@@ -58,13 +58,21 @@ http://localhost:3000/age-of-things
 
 Get the age of something now or between two start and end date/times.
 
+### Aspect Ratio Calculator
+
+```Shell
+http://localhost:3000/aspect-ratio-calculator
+```
+
+Title for this tool's name maybe a little miss leading. I was helping somebody making overlays for a presentation. They wanted (nigh on) pixel perfect 4:3 and 16:9 video feeds of varying sizes through out there presentation. This quick and easy tool gave me the dimensions of a box, with a given aspect ratio, via a given height or width.
+
 ### Blank Page
 
 ```Shell
 http://localhost:3000/blank-page
 ```
 
-Nothing to see here: just a simple *"Hello World"* blank page.
+Nothing to see here: just a simple _"Hello World"_ blank page.
 
 ### Hashes
 
@@ -86,7 +94,6 @@ This is one of my most recent tools. The gist, I have a Chromecast plugged into 
 
 I'd add more stuff here, as and when I get around to it. But I wouldn't hold out much hope of any of it being useful to you. Here's my current todo list:
 
-- Aspect ratio calculator
 - Colour stepper
 - LAN device IPs
 - Lorem Ipsum
@@ -95,13 +102,15 @@ I'd add more stuff here, as and when I get around to it. But I wouldn't hold out
 
 ## GitHub Webhooks
 
-I've added a GitHub webhook handler. This is for the demo that is hosted on <https://glitch.com> (see links below). This is used to keep the my-tools demo constanstly up-to-date. As it pulls whenever a push is made to the default ('main') branch. If you want to use this feature, then you will need to run your server with a  environment variable: `GITHUB_WEBHOOK_SECRET="[your-seceret]"`. This needs to match the secret used when creating the webhook for your repo (Settings -> Webhooks). Otherwise signature verifacation will always fail and the pull will not happen.
+I've added a GitHub webhook handler. This is for the demo that is hosted on <https://glitch.com> (see links below). This is used to keep the my-tools demo constantly up-to-date. As it pulls whenever a push is made to the default ('main') branch. If you want to use this feature, then you will need to run your server with a environment variable: `GITHUB_WEBHOOK_SECRET="[your-secret]"`. This needs to match the secret used when creating the webhook for your repo (Settings -> Webhooks). Otherwise signature verification will always fail and the pull will not happen.
 
 ## Demo
 
 You can look at a demo here: <https://my-tools-demo.glitch.me/>
+
 - [/index](https://my-tools-demo.glitch.me/) - Index
   - [/age-of-things](https://my-tools-demo.glitch.me/age-of-things) - Age of Things
+  - [/aspect-ratio-calculator](https://my-tools-demo.glitch.me/aspect-ratio-calculator) - Aspect Ratio Calculator
   - [/blank-page](https://my-tools-demo.glitch.me/blank-page) - Blank Page
   - [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
   - [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)

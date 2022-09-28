@@ -28,6 +28,7 @@ import express from 'express';
 // Routes
 import routeIndex from './routes/index.js';
 import routeAgeOfThings from './routes/age_of_things.js';
+import routeAspectRatioCalculator from './routes/aspect_ratio_calculator.js';
 import routeBlankPage from './routes/blank_page.js';
 import routeHashes from './routes/hashes.js';
 import routeVideoCapture from './routes/video_capture.js';
@@ -63,8 +64,11 @@ app.all('*', (req, res, next) => {
 // HTTP request for index page
 app.get('/', routeIndex);
 
-// HTTP request for video capture page
+// HTTP request for age of things page
 app.all('/age-of-things', routeAgeOfThings);
+
+// HTTP request for aspect ratio calculator page
+app.all('/aspect-ratio-calculator', routeAspectRatioCalculator);
 
 // HTTP request for blank page
 app.all('/blank-page', routeBlankPage);
