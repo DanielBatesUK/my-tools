@@ -48,7 +48,7 @@ npm start
 http://localhost:3000/
 ```
 
-Just a simple page. Nothing really to see here. Basically just a "Hello World".
+Just a simple page with links to the other tools.
 
 ### Age of Things
 
@@ -58,13 +58,21 @@ http://localhost:3000/age-of-things
 
 Get the age of something now or between two start and end date/times.
 
+### Blank Page
+
+```Shell
+http://localhost:3000/blank-page
+```
+
+Nothing to see here: just a simple *"Hello World"* blank page.
+
 ### Hashes
 
 ```Shell
 http://localhost:3000/hashes
 ```
 
-Something I made this for messing around md5 hashes a long time ago. I've long since forgotten what I actually used it for. But they're here anyway.
+Something I made for messing around md5 hashes a long time ago. I've long since forgotten what I actually used it for. But they're here anyway.
 
 ### Video Capture
 
@@ -93,9 +101,10 @@ I've added a GitHub webhook handler. This is for the demo that is hosted on <htt
 
 You can look at a demo here: <https://my-tools-demo.glitch.me/>
 - [/index](https://my-tools-demo.glitch.me/) - Index
-- [/age-of-things](https://my-tools-demo.glitch.me/age-of-things) - Age of Things
-- [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
-- [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)
+  - [/age-of-things](https://my-tools-demo.glitch.me/age-of-things) - Age of Things
+  - [/blank-page](https://my-tools-demo.glitch.me/blank-page) - Blank Page
+  - [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
+  - [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)
 
 ## Author
 
