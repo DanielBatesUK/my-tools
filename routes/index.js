@@ -12,8 +12,10 @@ function routeIndex(req, res) {
     res.end();
   } catch (error) {
     console.error(error);
-    res.send('Index error');
-    res.end();
+    if (!res.writableEnded) {
+      res.send('Index error');
+      res.end();
+    }
   }
 }
 

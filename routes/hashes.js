@@ -196,8 +196,10 @@ function routeIndex(req, res) {
     res.end();
   } catch (error) {
     console.error(error);
-    res.send('Hashes error');
-    res.end();
+    if (!res.writableEnded) {
+      res.send('Hashes error');
+      res.end();
+    }
   }
 }
 

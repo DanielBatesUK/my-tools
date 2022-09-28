@@ -60,7 +60,7 @@ function routeGitHubWebhook(req, res) {
   } catch (error) {
     console.error(error);
     if (!res.writableEnded) {
-      res.status(403).send(`{"github_webhook: {"error": "${error}"}`);
+      res.status(403).send(`GitHub webhook error`);
       res.end();
     }
   }

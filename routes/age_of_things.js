@@ -8,8 +8,10 @@ function routeAgeOfThings(req, res) {
     res.end();
   } catch (error) {
     console.error(error);
-    res.send('Age-of-things error');
-    res.end();
+    if (!res.writableEnded) {
+      res.send('Age-of-things error');
+      res.end();
+    }
   }
 }
 

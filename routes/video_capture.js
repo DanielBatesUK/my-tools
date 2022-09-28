@@ -8,8 +8,10 @@ function routeVideoCapture(req, res) {
     res.end();
   } catch (error) {
     console.error(error);
-    res.send('Video capture error');
-    res.end();
+    if (!res.writableEnded) {
+      res.send('Video capture error');
+      res.end();
+    }
   }
 }
 
