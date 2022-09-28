@@ -1,8 +1,20 @@
 doctype html
 html(lang='en')
   include head.pug
-  +head("Index", "home-account.png")
+  +head("My-Tools", "hammer-wrench.png")
   body
     .page
-      h1 !{ page_title }
-      p !{ page_content }
+      h1 My-Tools
+      p
+        ul(style='font-size: calc(var(--font-size) * 1.5)')
+          li 
+            a(href='./') Index
+          ul
+            li
+              a(href='./age-of-things') Age of Things
+            li
+              a(href='./blank-page') Blank page
+            li
+              a(href='./hashes') Hashes
+            li
+              a(href='./video-capture') Video Capture
