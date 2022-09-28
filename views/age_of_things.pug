@@ -5,90 +5,89 @@ html(lang='en')
     meta(charset='utf-8')
     link(rel='stylesheet', href='./css/fonts.css')
     link(rel='stylesheet', href='./css/default.css')
-    link(rel='icon' type='image/png' href='./images/timer-sand-complete.png')
+    link(rel='icon', type='image/png', href='./images/timer-sand-complete.png')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
   body
-    div(class='page')
+    .page
       h1 Age of Things
       div
-        div(id='starting' class='inline-block')
+        #starting.inline-block
           h3 Starting Date/Time
-          div(id='start_supported' style='display:inline' class='input_div')
-            input(type='datetime-local' step=1 name='start_datetime' id='start_datetime')
-          div(id='start_unsupported' style='display:inline' class='input_div')
-            input(type='text' name='start_date' id='start_date' maxlength=2 size=2 placeholder='DD')
+          #start_supported.input_div(style='display: inline')
+            input#start_datetime(type='datetime-local', step=1, name='start_datetime')
+          #start_unsupported.input_div(style='display: inline')
+            input#start_date(type='text', name='start_date', maxlength=2, size=2, placeholder='DD')
             label /
-            input(type='text' name='start_month' id='start_month' maxlength=2 size=2 placeholder='MM')
+            input#start_month(type='text', name='start_month', maxlength=2, size=2, placeholder='MM')
             label /
-            input(type='text' name='start_year' id='start_year' maxlength=4 size=4 placeholder='YYYY')
-            label , 
-            input(type='text' name='start_hours' id='start_hours' maxlength=2 size=2 placeholder='hh')
-            label : 
-            input(type='text' name='start_minutes' id='start_minutes' maxlength=2 size=2 placeholder='mm')
-            label : 
-            input(type='text' name='start_seconds' id='start_seconds' maxlength=2 size=2 placeholder='ss')
-            label &nbsp; 
-          input(type='submit' value='Get current age' onclick='getAge( getDateTime("start"), new Date(), "current date/time" );')
-        div(id='ending' class='inline-block')
+            input#start_year(type='text', name='start_year', maxlength=4, size=4, placeholder='YYYY')
+            label ,
+            input#start_hours(type='text', name='start_hours', maxlength=2, size=2, placeholder='hh')
+            label :
+            input#start_minutes(type='text', name='start_minutes', maxlength=2, size=2, placeholder='mm')
+            label :
+            input#start_seconds(type='text', name='start_seconds', maxlength=2, size=2, placeholder='ss')
+            label &nbsp;
+          input(type='submit', value='Get current age', onclick='getAge( getDateTime("start"), new Date(), "current date/time" );')
+        #ending.inline-block
           h3 Ending Date/Time
-          div(id='end_supported' style='display:inline' class='input_div')
-            input(type='datetime-local' step=1 name='end_datetime' id='end_datetime')
-          div(id='end_unsupported' style='display:inline' class='input_div')
-            input(type='text' name='end_date' id='end_date' maxlength=2 size=2 placeholder='DD')
+          #end_supported.input_div(style='display: inline')
+            input#end_datetime(type='datetime-local', step=1, name='end_datetime')
+          #end_unsupported.input_div(style='display: inline')
+            input#end_date(type='text', name='end_date', maxlength=2, size=2, placeholder='DD')
             label /
-            input(type='text' name='end_month' id='end_month' maxlength=2 size=2 placeholder='MM')
+            input#end_month(type='text', name='end_month', maxlength=2, size=2, placeholder='MM')
             label /
-            input(type='text' name='end_year' id='end_year' maxlength=4 size=4 placeholder='YYYY')
-            label , 
-            input(type='text' name='end_hours' id='end_hours' maxlength=2 size=2 placeholder='hh')
-            label : 
-            input(type='text' name='end_minutes' id='end_minutes' maxlength=2 size=2 placeholder='mm')
-            label : 
-            input(type='text' name='end_seconds' id='end_seconds' maxlength=2 size=2 placeholder='ss')
-            label &nbsp; 
-          input(type='submit' value='Get start and end age' onclick='getAge( getDateTime("start"), getDateTime("end") );')
-      div(style='margin-top: var(--border-radius)')  
+            input#end_year(type='text', name='end_year', maxlength=4, size=4, placeholder='YYYY')
+            label ,
+            input#end_hours(type='text', name='end_hours', maxlength=2, size=2, placeholder='hh')
+            label :
+            input#end_minutes(type='text', name='end_minutes', maxlength=2, size=2, placeholder='mm')
+            label :
+            input#end_seconds(type='text', name='end_seconds', maxlength=2, size=2, placeholder='ss')
+            label &nbsp;
+          input(type='submit', value='Get start and end age', onclick='getAge( getDateTime("start"), getDateTime("end") );')
+      div(style='margin-top: var(--border-radius)') 
         table
           tr
             th(colspan=2) Age
-              small(id='output_heading') current date
+              small#output_heading current date
           tr
             th Milliseconds
               small 1/1000 of a second
-            td(id='output_ms')
+            td#output_ms
           tr
             th Seconds
               small 1000 milliseconds
-            td(id='output_seconds')
+            td#output_seconds
           tr
             th Minutes
               small 60 seconds
-            td(id='output_minutes')
+            td#output_minutes
           tr
             th Hours
               small 60 minutes
-            td(id='output_hours')
+            td#output_hours
           tr
             th Days
               small 24 hours
-            td(id='output_days')
+            td#output_days
           tr
             th Weeks
               small 7 days
-            td(id='output_weeks')
+            td#output_weeks
           tr
             th Months
               small 31 days
-            td(id='output_months')
+            td#output_months
           tr
             th Years
               small 365 days
-            td(id='output_years')
+            td#output_years
           tr
             th Calendar Age
-            td(id='output_calendar')
+            td#output_calendar
     script.
-
       function pad(number, size) {
         number = number.toString();
         while (number.length < size) number = '0' + number;
@@ -96,19 +95,19 @@ html(lang='en')
       }
 
       function pluralWords(number, word) {
-        return `${(number === 0) ? '' : (number >= 2) ? `${number} ${word}s` : `${number} ${word}`}`;
+        return `${number === 0 ? '' : number >= 2 ? `${number} ${word}s` : `${number} ${word}`}`;
       }
-      
-      function isDateTimeLocalSupported () {
+
+      function isDateTimeLocalSupported() {
         let input = document.createElement('input');
         const value = 'a';
         input.setAttribute('type', 'datetime-local');
         input.setAttribute('value', value);
-        return (input.value !== value);
-      };
+        return input.value !== value;
+      }
 
       function getDateTime(input = 'start') {
-        if(!!document.getElementById('start_supported')) {
+        if (!!document.getElementById('start_supported')) {
           // Supported
           const gotDateTime = new Date(document.getElementById(`${input}_datetime`).value);
           console.log('getDateTime:', input, { gotDateTime });
@@ -142,7 +141,7 @@ html(lang='en')
         const dYears = dMS / (1000 * 60 * 60 * 24 * 365);
         const dDate = new Date(dMS);
         dDate.setMinutes(dDate.getMinutes() + dDate.getTimezoneOffset());
-        console.log('getAge:', 'difference:', { dMS, dSeconds, dMinutes, dHours, dDays, dWeeks, dMonths, dYears, dDate});
+        console.log('getAge:', 'difference:', { dMS, dSeconds, dMinutes, dHours, dDays, dWeeks, dMonths, dYears, dDate });
         // Set values
         document.getElementById('output_heading').innerHTML = type;
         document.getElementById('output_ms').innerHTML = dMS;
@@ -161,17 +160,17 @@ html(lang='en')
         const calMinutes = Math.abs(dDate.getMinutes());
         const calSeconds = Math.abs(dDate.getSeconds());
         console.log('getAge:', 'Calendar-Age:', { calYears, calMonths, calDays, calHours, calMinutes, calSeconds });
-        const calOutput = ([calYears, calMonths, calDays, calHours, calSeconds].reduce((a, b) => a + b, 0)) === 0 ? 'No time' : `${pluralWords(calYears,'Year')} ${pluralWords(calMonths,'Month')} ${pluralWords(calDays,'Day')} ${pluralWords(calHours,'Hour')} ${pluralWords(calMinutes,'Minute')} ${pluralWords(calSeconds,'Second')}`;
+        const calOutput = [calYears, calMonths, calDays, calHours, calSeconds].reduce((a, b) => a + b, 0) === 0 ? 'No time' : `${pluralWords(calYears, 'Year')} ${pluralWords(calMonths, 'Month')} ${pluralWords(calDays, 'Day')} ${pluralWords(calHours, 'Hour')} ${pluralWords(calMinutes, 'Minute')} ${pluralWords(calSeconds, 'Second')}`;
         document.getElementById('output_calendar').innerHTML = calOutput;
       }
 
-      window.onload = function(){
+      window.onload = function () {
         // Initial current time
         const cDate = new Date();
         // Datetime-local supported
         const dateTimeLocalSupported = isDateTimeLocalSupported();
         console.log({ dateTimeLocalSupported });
-        if(dateTimeLocalSupported) {
+        if (dateTimeLocalSupported) {
           // Supported
           cDate.setMinutes(cDate.getMinutes() - cDate.getTimezoneOffset());
           document.getElementById('start_unsupported').remove();
@@ -182,25 +181,28 @@ html(lang='en')
           //Unsupported
           document.getElementById('start_supported').remove();
           document.getElementById('start_year').value = pad(cDate.getFullYear(), 4);
-          document.getElementById('start_month').value = pad((cDate.getMonth() + 1), 2);
+          document.getElementById('start_month').value = pad(cDate.getMonth() + 1, 2);
           document.getElementById('start_date').value = pad(cDate.getDate(), 2);
           document.getElementById('start_hours').value = pad(cDate.getHours(), 2);
           document.getElementById('start_minutes').value = pad(cDate.getMinutes(), 2);
           document.getElementById('start_seconds').value = pad(cDate.getSeconds(), 2);
           document.getElementById('end_supported').remove();
           document.getElementById('end_year').value = pad(cDate.getFullYear(), 4);
-          document.getElementById('end_month').value = pad((cDate.getMonth() + 1), 2);
+          document.getElementById('end_month').value = pad(cDate.getMonth() + 1, 2);
           document.getElementById('end_date').value = pad(cDate.getDate(), 2);
           document.getElementById('end_hours').value = pad(cDate.getHours(), 2);
           document.getElementById('end_minutes').value = pad(cDate.getMinutes(), 2);
           document.getElementById('end_seconds').value = pad(cDate.getSeconds(), 2);
-        }  
-        console.log('onload:', { cDate, 'isoString': cDate.toISOString().slice(0, 19)});
+        }
+        console.log('onload:', { cDate, isoString: cDate.toISOString().slice(0, 19) });
         getAge(cDate, cDate, 'current date/time');
         // Key Press (enter)
         const inputStart = document.getElementById('starting');
-        inputStart.addEventListener('keyup', (event) => { if(event.code === 'Enter') getAge(getDateTime("start"), new Date(), "current date/time"); });
+        inputStart.addEventListener('keyup', (event) => {
+          if (event.code === 'Enter') getAge(getDateTime('start'), new Date(), 'current date/time');
+        });
         const inputEnd = document.getElementById('ending');
-        inputEnd.addEventListener('keyup', (event) => { if(event.code === 'Enter') getAge(getDateTime("start"), getDateTime("end"), "current date/time"); });
-      }
-
+        inputEnd.addEventListener('keyup', (event) => {
+          if (event.code === 'Enter') getAge(getDateTime('start'), getDateTime('end'), 'current date/time');
+        });
+      };
