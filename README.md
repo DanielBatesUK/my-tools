@@ -64,7 +64,7 @@ Get the age of something now or between two start and end date/times.
 http://localhost:3000/aspect-ratio-calculator
 ```
 
-Title for this tool's name maybe a little miss leading. I was helping somebody making overlays for a presentation. They wanted (nigh on) pixel perfect 4:3 and 16:9 video feeds of varying sizes through out there presentation. This quick and easy tool gave me the dimensions of a box, with a given aspect ratio, via a given height or width.
+Title for this tool's name maybe a little miss leading. I was helping somebody making overlays for a presentation. They wanted (nigh on) pixel perfect 4:3 and 16:9 video feeds of varying sizes throughout their presentation. This quick and easy tool gave me the dimensions (resolution) of a box, with a given aspect ratio, via a given height or width.
 
 ### Blank Page
 
