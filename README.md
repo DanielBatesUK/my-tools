@@ -72,7 +72,7 @@ Nothing to see here: just a simple *"Hello World"* blank page.
 http://localhost:3000/hashes
 ```
 
-Something I made for messing around md5 hashes a long time ago. I've long since forgotten what I actually used it for. But they're here anyway.
+Something I made for messing around with md5 hashes a long time ago. I've long since forgotten what I actually used it for. But they're here anyway.
 
 ### Video Capture
 
