@@ -47,23 +47,14 @@ function lowerUpperNumbers(string) {
     // No lowercase letters found - change last character
     if (/[a-zA-Z]/.test(results.substring(results.length - 1, results.length))) {
       // Last character is a letter - change to lowercase
-      console.info(
-        `fixString - last character is a letter '${results.substring(
-          results.length - 1,
-          results.length
-        )}' change to lowercase: ${results}`
-      );
-      results =
-        results.substring(0, results.length - 1) + results.substring(results.length - 1, results.length).toLowerCase();
+      console.info(`fixString - last character is a letter '${results.substring(results.length - 1, results.length)}' change to lowercase: ${results}`);
+      results = results.substring(0, results.length - 1) + results.substring(results.length - 1, results.length).toLowerCase();
     } else {
       // Last character is a number - create lowercase from number
       let lastNumber = Number(results.substring(results.length - 1, results.length));
       if (lastNumber > 5) lastNumber = Math.round(lastNumber / 2);
       console.info(
-        `fixString - Last character is a number '${results.substring(
-          results.length - 1,
-          results.length
-        )}' change to lowercase character-code '${lastNumber + 65 + 32}' (${String.fromCharCode(
+        `fixString - Last character is a number '${results.substring(results.length - 1, results.length)}' change to lowercase character-code '${lastNumber + 65 + 32}' (${String.fromCharCode(
           lastNumber + 65 + 32
         )}): ${string}`
       );
@@ -80,18 +71,14 @@ function lowerUpperNumbers(string) {
     // No uppercase letters found - change first character
     if (/[a-zA-Z]/.test(results.substring(0, 1))) {
       // First character is a letter - change to uppercase
-      console.info(
-        `fixString - First character is a letter '${results.substring(0, 1)}' change to uppercase: ${results}`
-      );
+      console.info(`fixString - First character is a letter '${results.substring(0, 1)}' change to uppercase: ${results}`);
       results = results.substring(0, 1).toUpperCase() + results.substring(1, results.length);
     } else {
       // First character is a number - create uppercase from number
       let firstNumber = Number(results.substring(0, 1));
       if (firstNumber > 5) firstNumber /= 2;
       console.info(
-        `fixString - First character is a number '${results.substring(0, 1)}' change to uppercase character-code '${
-          firstNumber + 65
-        }' (${String.fromCharCode(firstNumber + 65)}): ${results}`
+        `fixString - First character is a number '${results.substring(0, 1)}' change to uppercase character-code '${firstNumber + 65}' (${String.fromCharCode(firstNumber + 65)}): ${results}`
       );
       results = String.fromCharCode(firstNumber + 65).toUpperCase() + results.substring(1, results.length);
     }
@@ -104,11 +91,7 @@ function lowerUpperNumbers(string) {
   if (!hasNumbers) {
     console.info(`fixString - String has no numbers: ${results}`);
     // No numbers found - change second character
-    console.info(
-      `fixString - Second character (${results.substring(1, 2)}) is character-code '${results.charCodeAt(
-        1
-      )}' change letter to number '${results.charCodeAt(1) - 65}': ${results}`
-    );
+    console.info(`fixString - Second character (${results.substring(1, 2)}) is character-code '${results.charCodeAt(1)}' change letter to number '${results.charCodeAt(1) - 65}': ${results}`);
     results = results.substring(0, 1) + (results.charCodeAt(1) - 65) + results.substring(2, results.length);
     console.info(`fixString - Replaced second character with number: ${results}`);
     // Check string again
@@ -121,40 +104,7 @@ function lowerUpperNumbers(string) {
 
 function addSymbols(string) {
   // Array of text symbols used
-  const symbolsArray = [
-    '!',
-    '"',
-    '#',
-    '$',
-    '%',
-    '&',
-    "'",
-    '(',
-    ')',
-    '*',
-    '+',
-    ',',
-    '-',
-    '.',
-    '/',
-    ':',
-    ';',
-    '<',
-    '=',
-    '>',
-    '?',
-    '@',
-    '[',
-    '\\',
-    ']',
-    '^',
-    '_',
-    '`',
-    '{',
-    '|',
-    '}',
-    '~',
-  ];
+  const symbolsArray = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
 
   // Get first number in the string
   let firstNumber = Number(string[string.search(/[0-9]/)]);
@@ -167,27 +117,14 @@ function addSymbols(string) {
   // Replace first character in each part with symbol
   let results = '';
   for (let i = 0; i < stringArray.length; i += 1) {
-    results =
-      results +
-      stringArray[i].substring(0, stringArray[i].length - 1) +
-      symbolsArray[((firstNumber += 1) * (i + 1)) % symbolsArray.length];
-    console.info(
-      `addSymbols - Replaced last character with symbol '${
-        symbolsArray[(firstNumber * (i + 1)) % symbolsArray.length]
-      }' on string part #${i + 1} '${stringArray[i]}': ${string}`
-    );
+    results = results + stringArray[i].substring(0, stringArray[i].length - 1) + symbolsArray[((firstNumber += 1) * (i + 1)) % symbolsArray.length];
+    console.info(`addSymbols - Replaced last character with symbol '${symbolsArray[(firstNumber * (i + 1)) % symbolsArray.length]}' on string part #${i + 1} '${stringArray[i]}': ${string}`);
   }
   // Finished
   return results;
 }
 
-function getHash(
-  string,
-  outputLength = 32,
-  forceAlternateCase = true,
-  forceLowerUpperNumbers = true,
-  forceSymbols = true
-) {
+function getHash(string, outputLength = 32, forceAlternateCase = true, forceLowerUpperNumbers = true, forceSymbols = true) {
   // Cut size of string
   let results = String(getMD5(string)).substring(0, outputLength);
   // Force alternating case
@@ -211,9 +148,7 @@ function hashTableData(inputString) {
     if (Math.sign(i) === 1) ojectMonthName = `p${i}_month`;
     const tempDate = new Date(currentDate.getTime());
     tempDate.setMonth(tempDate.getMonth() + i);
-    const tempString = String(
-      inputString + tempDate.toLocaleString('default', { month: 'long' }) + String(tempDate.getFullYear())
-    );
+    const tempString = String(inputString + tempDate.toLocaleString('default', { month: 'long' }) + String(tempDate.getFullYear()));
     results[ojectMonthName] = {
       heading: String(tempDate.getFullYear()).substring(2, 4) + String(tempDate.getMonth() + 1).padStart(2, '0'),
       hash_8: getHash(tempString, 8, true, true, true),

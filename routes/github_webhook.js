@@ -10,7 +10,7 @@ import { execSync } from 'child_process';
 function checkSignature(receivedSignature, body) {
   const secret = process.env.GITHUB_WEBHOOK_SECRET;
   const expectedSignature = `sha1=${crypto.createHmac('sha1', secret).update(JSON.stringify(body)).digest('hex')}`;
-  return receivedSignature === expectedSignature ? true : false;
+  return receivedSignature === expectedSignature;
 }
 
 // Route - GitHub Webhooks
@@ -18,8 +18,7 @@ function routeGitHubWebhook(req, res) {
   try {
     console.log(`Processing HTTP ${req.method} request for '${req.path}' as 'GitHub Webhook'`);
     // Check Webhook signature
-    if (checkSignature(req.headers['x-hub-signature'], req.body) === false)
-      throw Error('Signature mismatch from GitHub Webhook');
+    if (checkSignature(req.headers['x-hub-signature'], req.body) === false) throw Error('Signature mismatch from GitHub Webhook');
     console.log('Signature from GitHub Webhook verified successfully');
     console.log('GitHub Webhook', req.body);
     res.status(200).send('{"status":200}');
