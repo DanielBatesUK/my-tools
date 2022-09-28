@@ -27,10 +27,13 @@ import express from 'express';
 
 // Routes
 import routeIndex from './routes/index.js';
+import routeAgeOfThings from './routes/age_of_things.js';
+import routeBlankPage from './routes/blank_page.js';
 import routeHashes from './routes/hashes.js';
 import routeVideoCapture from './routes/video_capture.js';
+
+// GitHub Webhook route
 import routeGitHubWebhook from './routes/github_webhook.js';
-import routeAgeOfThings from './routes/age_of_things.js';
 
 // ################################################################################################
 
@@ -62,6 +65,9 @@ app.get('/', routeIndex);
 
 // HTTP request for video capture page
 app.all('/age-of-things', routeAgeOfThings);
+
+// HTTP request for blank page
+app.all('/blank-page', routeBlankPage);
 
 // HTTP request for hashes page
 app.all('/hashes', routeHashes);

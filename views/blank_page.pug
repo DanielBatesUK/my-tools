@@ -1,0 +1,8 @@
+doctype html
+html(lang='en')
+  include head.pug
+  +head(page_title, page_favicon)
+  body
+    .page
+      h1 !{ page_title }
+      p !{ page_content }
