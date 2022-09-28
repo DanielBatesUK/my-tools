@@ -1,76 +1,71 @@
 doctype html
 html(lang='en')
-  head
-    title Video Capture
-    meta(charset='utf-8')
-    link(rel='stylesheet', href='./css/fonts.css')
-    link(rel='stylesheet', href='./css/default.css')
-    link(rel='icon', type='image/png', href='./images/television-classic.png')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
-    style.
-      html,
-      body {
-        margin: 0;
-        border: 0;
-        padding: 0;
-        background-color: #101010;
-        background-image: none;
-        font-size: 0.75rem;
-      }
-      body {
-        overflow: hidden;
-      }
-      #container {
-        margin: 0px auto;
-        overflow: hidden;
-        width: 100vw;
-        height: 100vh;
-      }
+  include head.pug
+  +head("Video Capture", "television-classic.png")
+  style.
+    html,
+    body {
+      margin: 0;
+      border: 0;
+      padding: 0;
+      background-color: #101010;
+      background-image: none;
+      font-size: 0.75rem;
+    }
+    body {
+      overflow: hidden;
+    }
+    #container {
+      margin: 0px auto;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
 
-      #video-player {
-        width: 100vw;
-        height: 100vh;
-        background-color: #101010;
-      }
+    #video-player {
+      width: 100vw;
+      height: 100vh;
+      background-color: #101010;
+    }
 
-      #settings-button {
-        display: block;
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        width: 3rem;
-        height: 3rem;
-        margin: 0;
-        border: 0;
-        padding: 0;
-        opacity: 0;
-        color: #ffffff;
-        z-index: 2;
-        transition: all 1s;
-      }
+    #settings-button {
+      display: block;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      width: 3rem;
+      height: 3rem;
+      margin: 0;
+      border: 0;
+      padding: 0;
+      opacity: 0;
+      color: #ffffff;
+      z-index: 2;
+      transition: all 1s;
+    }
 
-      #settings-button svg {
-        height: 100%;
-        width: 100%;
-      }
-      #settings-button:hover {
-        cursor: pointer;
-        opacity: 1;
-      }
+    #settings-button svg {
+      height: 100%;
+      width: 100%;
+    }
+    #settings-button:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
 
-      #controls {
-        display: none;
-        position: absolute;
-        top: 1rem;
-        left: 5rem;
-        width: auto;
-        max-height: calc(100% - 2rem);
-        overflow: auto;
-        margin: 0 5rem 1rem 0;
-        z-index: 2;
-        opacity: 0;
-        transition: all 0.25s;
-      }
+    #controls {
+      display: none;
+      position: absolute;
+      top: 1rem;
+      left: 5rem;
+      width: auto;
+      max-height: calc(100% - 2rem);
+      overflow: auto;
+      margin: 0 5rem 1rem 0;
+      z-index: 2;
+      opacity: 0;
+      transition: all 0.25s;
+    }
   body 
     meta(name='theme-color', content='#101010')
     #container
