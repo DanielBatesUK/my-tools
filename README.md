@@ -82,6 +82,14 @@ http://localhost:3000/hashes
 
 Something I made for messing around with md5 hashes a long time ago. I've long since forgotten what I actually used it for. But they're here anyway.
 
+### URI Encode/Decode
+
+```Shell
+http://localhost:3000/uri-encode-decode
+```
+
+This simply converts text into a uri string; or a uri string into text. Nothing fancy here. I made this to help convert svg elements to uri strings, so I could embed into them css: `background-image: url("data:image/svg+xml;%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20%3E%20...%20%3C%2Fsvg%3E");`
+
 ### Video Capture
 
 ```Shell
@@ -113,6 +121,7 @@ You can look at a demo here: <https://my-tools-demo.glitch.me/>
   - [/aspect-ratio-calculator](https://my-tools-demo.glitch.me/aspect-ratio-calculator) - Aspect Ratio Calculator
   - [/blank-page](https://my-tools-demo.glitch.me/blank-page) - Blank Page
   - [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
+  - [/uri-encode-decode](https://my-tools-demo.glitch.me/uri-encode-decode) - URI Encode/Decode
   - [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)
 
 ## Author
