@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+  include head.pug
+  +head("URI Encode Decode", "form-textbox.png")
+  body
+    .page
+      h1 URI Encode/Decode
+      #text.block
+        h3 Text
+        textarea#iText(rows=24, style='width: 100%')
+        br
+        input(type='submit', value='Encode Text', onclick='encodeDecode("text");')
+        svg.copy(style='float: right', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24', onclick='navigator.clipboard.writeText(document.getElementById(\'iText\').value);')
+          title Copy Text
+          path(fill='currentColor', d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z')
+      #uri.block
+        h3 URI
+        input#iURI(type='text', style='width: 100%')
+        br
+        input(type='submit', value='Decode URI', onclick='encodeDecode("uri");')
+        svg.copy(style='float: right', xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24', onclick='navigator.clipboard.writeText(document.getElementById(\'iURI\').value);')
+          title Copy URI
+          path(fill='currentColor', d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z')
+    script.
+      function encodeDecode(type) {
+        if (type === 'text') {
+          document.getElementById('iURI').value = encodeURIComponent(document.getElementById('iText').value);
+        } else {
+          document.getElementById('iText').value = decodeURIComponent(document.getElementById('iURI').value);
+        }
+      }
