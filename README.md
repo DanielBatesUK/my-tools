@@ -88,7 +88,7 @@ Something I made for messing around with md5 hashes a long time ago. I've long s
 http://localhost:3000/uri-encode-decode
 ```
 
-This simply converts text into a uri string; or a uri string into text. Nothing fancy here. I made this to help convert svg elements to uri strings, so I could embed into them css: `background-image: url("data:image/svg+xml;%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20%3E%20...%20%3C%2Fsvg%3E");`
+This simply converts text into a uri string; or a uri string into text. Nothing fancy here. I made this to help convert svg elements to uri strings, so I could embed into them css: `background-image: url("data:image/svg+xml;utf8,%3Csvg ... ");`
 
 ### Video Capture
 
