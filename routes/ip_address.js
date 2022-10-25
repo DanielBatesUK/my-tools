@@ -12,7 +12,7 @@ function routeIPAddress(req, res) {
   } catch (error) {
     console.error(error);
     if (!res.writableEnded) {
-      res.send('Blank-page error');
+      res.send('IP-address error');
       res.end();
     }
   }
