@@ -1,0 +1,58 @@
+doctype html
+html(lang='en')
+  include head.pug
+  +head('QR Code', 'qrcode.png')
+  body
+    .page
+      h1 QR Code
+      div
+        .inline-block
+          h3 Size
+            small width and height in pixels
+          input#size(type='number', value=200, min=29, max=546)
+        .inline-block
+          h3 Encoding
+          input#encU(type='radio', name='enc', value='UTF-8', CHECKED)
+          label(for='encU') UTF-8
+          input#encS(type='radio', name='enc', value='Shift_JIS')
+          label(for='encS') Shift_JIS
+          input#encI(type='radio', name='enc', value='ISO-8859-1')
+          label(for='encI') ISO-8859-1
+        .inline-block
+          h3 Error Correction
+          input#errL(type='radio', name='err', value='L', CHECKED)
+          label(for='errL') L (7%)
+          input#errM(type='radio', name='err', value='M')
+          label(for='errM') M (15%)
+          input#errQ(type='radio', name='err', value='Q')
+          label(for='errQ') Q (25%)
+          input#errH(type='radio', name='err', value='H')
+          label(for='errH') H (30%)
+      div
+        .block
+          h3 Data string
+          textarea#dataString(style='width: 100%', placeholder='Enter data string here...')
+          input(type='submit', value='Generate QR Code', onclick='generateQRCode();')
+      div
+        .inline-block
+          h3 QR Code
+          img#qrCode(src='https://chart.googleapis.com/chart?cht=qr&chs=200x200&choe=UTF-8&chl=Hello+world')
+    script.
+      // Generate QR Code
+      function generateQRCode() {
+        try {
+          // Read parameters
+          console.log('Reading parameters...');
+          const pObj = {
+            chs: document.getElementById('size').value,
+            chl: document.getElementById('dataString').value,
+            choe: Number(document.querySelector('input[name="enc"]:checked').value),
+            chld: Number(document.querySelector('input[name="err"]:checked').value),
+          };
+          console.log({ pObj });
+          // Change QR code image source
+          document.getElementById('qrCode').src = `https://chart.googleapis.com/chart?cht=qr&chs=${pObj.chs}&chl=${encodeURIComponent(pObj.chl)}&choe=${pObj.choe}&chld=${pObj.chld}`;
+        } catch (error) {
+          console.error(error);
+        }
+      }

@@ -90,6 +90,14 @@ http://localhost:3000/ip-address
 
 I made this page for my Uncle. With me being the "tech-guy" of the family. He would repeatedly be asking me how it finds his internet IP address; when setting up multiplayer lobbies for online games. This page simply displays you public ip address (and stops Uncles bothering you).
 
+### QR Code
+
+```Shell
+http://localhost:3000/qr-code
+```
+
+I can't remember why I created this page. It creates QR codes using Google's chart infographics api.
+
 ### URI Encode/Decode
 
 ```Shell
@@ -130,6 +138,7 @@ You can look at a demo here: <https://my-tools-demo.glitch.me/>
   - [/blank-page](https://my-tools-demo.glitch.me/blank-page) - Blank Page
   - [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
   - [/ip-address](https://my-tools-demo.glitch.me/ip-address) - IP Address
+  - [/qr-code](https://my-tools-demo.glitch.me/qr-code) - QR Code
   - [/uri-encode-decode](https://my-tools-demo.glitch.me/uri-encode-decode) - URI Encode/Decode
   - [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)
 
