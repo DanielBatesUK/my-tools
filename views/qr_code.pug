@@ -46,8 +46,8 @@ html(lang='en')
           const pObj = {
             chs: document.getElementById('size').value,
             chl: document.getElementById('dataString').value,
-            choe: Number(document.querySelector('input[name="enc"]:checked').value),
-            chld: Number(document.querySelector('input[name="err"]:checked').value),
+            choe: document.querySelector('input[name="enc"]:checked').value,
+            chld: document.querySelector('input[name="err"]:checked').value,
           };
           console.log({ pObj });
           // Change QR code image source
