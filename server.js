@@ -31,6 +31,7 @@ import routeAgeOfThings from './routes/age_of_things.js';
 import routeAspectRatioCalculator from './routes/aspect_ratio_calculator.js';
 import routeBlankPage from './routes/blank_page.js';
 import routeHashes from './routes/hashes.js';
+import routeIPAddress from './routes/ip_address.js';
 import routeURIEncodeDecode from './routes/uri_encode_decode.js';
 import routeVideoCapture from './routes/video_capture.js';
 
@@ -76,6 +77,9 @@ app.all('/blank-page', routeBlankPage);
 
 // HTTP request for hashes page
 app.all('/hashes', routeHashes);
+
+// HTTP request for hashes page
+app.all('/ip-address', routeIPAddress);
 
 // HTTP request for URI Encode/Decode page
 app.all('/uri-encode-decode', routeURIEncodeDecode);

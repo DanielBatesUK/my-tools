@@ -82,6 +82,14 @@ http://localhost:3000/hashes
 
 Something I made for messing around with md5 hashes a long time ago. I've long since forgotten what I actually used it for. But they're here anyway.
 
+### IP Address
+
+```Shell
+http://localhost:3000/ip-address
+```
+
+I made this page for my Uncle. With me being the "tech-guy" of the family. He would repeatedly be asking me how it finds his internet IP address; when setting up multiplayer lobbies for online games. This page simply displays you public ip address (and stops Uncles bothering you).
+
 ### URI Encode/Decode
 
 ```Shell
@@ -121,6 +129,7 @@ You can look at a demo here: <https://my-tools-demo.glitch.me/>
   - [/aspect-ratio-calculator](https://my-tools-demo.glitch.me/aspect-ratio-calculator) - Aspect Ratio Calculator
   - [/blank-page](https://my-tools-demo.glitch.me/blank-page) - Blank Page
   - [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
+  - [/ip-address](https://my-tools-demo.glitch.me/ip-address) - IP Address
   - [/uri-encode-decode](https://my-tools-demo.glitch.me/uri-encode-decode) - URI Encode/Decode
   - [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)
 

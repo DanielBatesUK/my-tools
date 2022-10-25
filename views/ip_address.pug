@@ -1,0 +1,9 @@
+doctype html
+html(lang='en')
+  include head.pug
+  +head("IP Address", "ip-network-outline.png")
+  body
+    .page
+      h1 IP Address
+      h3 Your IP Address is:
+      h2 !{ ipAddress }
