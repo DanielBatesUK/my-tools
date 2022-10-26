@@ -121,7 +121,6 @@ I'd add more stuff here, as and when I get around to it. But I wouldn't hold out
 - Colour stepper
 - LAN device IPs
 - Lorem Ipsum
-- QR Code
 - And more!
 
 ## GitHub Webhooks
