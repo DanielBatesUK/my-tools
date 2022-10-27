@@ -90,6 +90,14 @@ http://localhost:3000/ip-address
 
 I made this page for my Uncle. With me being the "tech-guy" of the family. He would repeatedly be asking me how it finds his internet IP address; when setting up multiplayer lobbies for online games. This page simply displays you public ip address (and stops Uncles bothering you).
 
+### Lorem Ipsum
+
+```Shell
+http://localhost:3000/lorem-ipsum
+```
+
+This was one of the first tools I made for myself. A _Lorem Ipsum_ text generator that I used when designing webpages. The text generated can be used to populate areas on a webpage that would generally have text.
+
 ### QR Code
 
 ```Shell
@@ -116,12 +124,7 @@ This is one of my most recent tools. The gist, I have a Chromecast plugged into 
 
 ### More to come
 
-I'd add more stuff here, as and when I get around to it. But I wouldn't hold out much hope of any of it being useful to you. Here's my current todo list:
-
-- Colour stepper
-- LAN device IPs
-- Lorem Ipsum
-- And more!
+I'd add more stuff here, as and when I get around to it. But I wouldn't hold out much hope of any of it being useful to you.
 
 ## GitHub Webhooks
 
@@ -137,6 +140,7 @@ You can look at a demo here: <https://my-tools-demo.glitch.me/>
   - [/blank-page](https://my-tools-demo.glitch.me/blank-page) - Blank Page
   - [/hashes](https://my-tools-demo.glitch.me/hashes) - Hashes
   - [/ip-address](https://my-tools-demo.glitch.me/ip-address) - IP Address
+  - [/lorem-ipsum](https://my-tools-demo.glitch.me/lorem-ipsum) - Lorem Ipsum
   - [/qr-code](https://my-tools-demo.glitch.me/qr-code) - QR Code
   - [/uri-encode-decode](https://my-tools-demo.glitch.me/uri-encode-decode) - URI Encode/Decode
   - [/video-capture](https://my-tools-demo.glitch.me/video-capture) - Video Capture (and [stand-alone HTML](https://my-tools-demo.glitch.me/video-capture.html) version)

@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+  include head.pug
+  +head('Lorem Ipsum', page_favicon)
+  body
+    .page
+      h1 Lorem Ipsum
+      #controls
+        .inline-block
+          label(for='chr') Number of characters (approx)
+          input#chr(type='number', min=1, value=446)
+        input(type='submit', value='Generate Lorem Ipsum', onclick='generateString();')
+        input(type='button', value='Copy Text', onclick='navigator.clipboard.writeText(document.getElementById(\'loremText\').innerHTML);')
+      .block
+        #loremText
+          p lorem text here
+      input(type='button', value='Copy Text', onclick='navigator.clipboard.writeText(document.getElementById(\'loremText\').innerHTML);')
+    script.
+      // Lorem ipsum string variable
+      const loremIpsumString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+      // Last character of a string
+      function lastChr(string) {
+        return string.substring(string.length - 1);
+      }
+
+      // Generate lorem ipsum string
+      function generateString(number = document.getElementById('chr').value) {
+        console.log({ number });
+        let outputString = '';
+        do {
+          outputString += ` ${loremIpsumString}`;
+        } while (outputString.length < number);
+        outputString = outputString.substring(0, number).trim();
+        outputString = lastChr(outputString) !== '.' ? `${outputString.substring(0, outputString.lastIndexOf(' ')).trim()}` : outputString;
+        outputString = lastChr(outputString) !== '.' ? `${outputString}.` : outputString;
+        document.getElementById('loremText').innerHTML = outputString;
+      }
+
+      // Enter key pressed on controls
+      const controlsDiv = document.getElementById('controls');
+      controlsDiv.addEventListener('keyup', (event) => {
+        if (event.code === 'Enter') generateString();
+      });
+
+      window.onload = generateString();

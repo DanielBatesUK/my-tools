@@ -32,6 +32,7 @@ import routeAspectRatioCalculator from './routes/aspect_ratio_calculator.js';
 import routeBlankPage from './routes/blank_page.js';
 import routeHashes from './routes/hashes.js';
 import routeIPAddress from './routes/ip_address.js';
+import routeLoremIpsum from './routes/lorem_ipsum.js';
 import routeQRCode from './routes/qr_code.js';
 import routeURIEncodeDecode from './routes/uri_encode_decode.js';
 import routeVideoCapture from './routes/video_capture.js';
@@ -64,32 +65,17 @@ app.all('*', (req, res, next) => {
   next();
 });
 
-// HTTP request for index page
-app.get('/', routeIndex);
-
-// HTTP request for age of things page
-app.all('/age-of-things', routeAgeOfThings);
-
-// HTTP request for aspect ratio calculator page
-app.all('/aspect-ratio-calculator', routeAspectRatioCalculator);
-
-// HTTP request for blank page
-app.all('/blank-page', routeBlankPage);
-
-// HTTP request for hashes page
-app.all('/hashes', routeHashes);
-
-// HTTP request for IP address page
-app.all('/ip-address', routeIPAddress);
-
-// HTTP request for QR code page
-app.all('/qr-code', routeQRCode);
-
-// HTTP request for URI Encode/Decode page
-app.all('/uri-encode-decode', routeURIEncodeDecode);
-
-// HTTP request for video capture page
-app.all('/video-capture', routeVideoCapture);
+// HTTP requests
+app.get('/', routeIndex); // Index page
+app.all('/age-of-things', routeAgeOfThings); // Age of things
+app.all('/aspect-ratio-calculator', routeAspectRatioCalculator); // Aspect ratio calculator
+app.all('/blank-page', routeBlankPage); // Blank page
+app.all('/hashes', routeHashes); // Hashes
+app.all('/ip-address', routeIPAddress); // IP address
+app.all('/lorem-ipsum', routeLoremIpsum); // Lorem ipsum
+app.all('/qr-code', routeQRCode); // QR code
+app.all('/uri-encode-decode', routeURIEncodeDecode); // uri encode decode
+app.all('/video-capture', routeVideoCapture); // Video capture
 
 // ################################################################################################
 
