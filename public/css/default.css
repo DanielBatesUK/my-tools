@@ -21,7 +21,7 @@
 
   --box-shadow: 0 0 var(--border-radius) var(--border-radius) rgba(0, 0, 0, 0.05);
 
-  --font-size: 1rem;
+  --font-size: 0.75rem;
   --normal-font: 'Overpass';
   --mono-font: 'Overpass Mono';
 }

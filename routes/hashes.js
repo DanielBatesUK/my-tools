@@ -111,7 +111,7 @@ function addSymbols(string) {
   console.info(`addSymbols - First number in string is '${firstNumber}': ${string}`);
 
   // Divide string into 4 parts
-  const stringArray = string.match(new RegExp(`.{1,${string.length / 4}}`, 'g'));
+  const stringArray = string.match(new RegExp(`.{1,${Math.floor(string.length / 4)}}`, 'g'));
   console.info(`addSymbols - Split string into 4 parts '${stringArray.toString()}': ${string}`);
 
   // Replace first character in each part with symbol
@@ -184,8 +184,12 @@ function routeIndex(req, res) {
       alt_10: getHash(inputString, 10, true, true, false),
       alt_12: getHash(inputString, 12, true, true, false),
       alt_16: getHash(inputString, 16, true, true, false),
+      alt_18: getHash(inputString, 18, true, true, false),
+      alt_20: getHash(inputString, 20, true, true, false),
       alt_32: getHash(inputString, 32, true, true, false),
       alt_sym_16: getHash(inputString, 16, true, true, true),
+      alt_sym_18: getHash(inputString, 18, true, true, true),
+      alt_sym_20: getHash(inputString, 20, true, true, true),
       alt_sym_32: getHash(inputString, 32, true, true, true),
       hash_table: hashTableData(inputString),
     };
