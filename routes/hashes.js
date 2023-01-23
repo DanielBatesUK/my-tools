@@ -184,6 +184,7 @@ function routeIndex(req, res) {
       alt_10: getHash(inputString, 10, true, true, false),
       alt_12: getHash(inputString, 12, true, true, false),
       alt_16: getHash(inputString, 16, true, true, false),
+      alt_32: getHash(inputString, 32, true, true, false),
       alt_sym_16: getHash(inputString, 16, true, true, true),
       alt_sym_32: getHash(inputString, 32, true, true, true),
       hash_table: hashTableData(inputString),
