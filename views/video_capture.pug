@@ -110,6 +110,14 @@ html(lang='en')
         label(for='vf25') 25
         input#vf24(type='radio', name='vf', value='24', onclick='controlsChange();')
         label(for='vf24') 24
+      .inline-block
+        h3 Brightness, Constrast &amp; Saturation
+        label(for='vb') Brightness
+        input#vb(type='range', name='vb', min='-127', max='127', value='0', onclick='controlsChange();')
+        label(for='vc') Contrast
+        input#vc(type='range', name='vc', min='-0', max='255', value='0', onclick='controlsChange();')
+        label(for='vs') Saturation
+        input#vs(type='range', name='vs', min='-0', max='255', value='0', onclick='controlsChange();')
       h3 Audio settings
       .inline-block
         h3 Audio device
@@ -206,6 +214,9 @@ html(lang='en')
             vw: urlParams.vw ? Number(urlParams.vw) : 1280,
             vh: urlParams.vh ? Number(urlParams.vh) : 720,
             vf: urlParams.vf ? Number(urlParams.vf) : 30,
+            vb: urlParams.vb ? Number(urlParams.vb) : 0,
+            vc: urlParams.vc ? Number(urlParams.vc) : 128,
+            vs: urlParams.vs ? Number(urlParams.vs) : 128,
           };
           console.log('parametersObject', parametersObject);
         } catch (error) {
@@ -226,6 +237,9 @@ html(lang='en')
           document.getElementById('videoinput').value = parametersObject.v;
           document.getElementById(`vh${parametersObject.vh}`).checked = true;
           document.getElementById(`vf${parametersObject.vf}`).checked = true;
+          document.getElementById(`vb`).value = parametersObject.vb;
+          document.getElementById(`vc`).value = parametersObject.vc;
+          document.getElementById(`vs`).value = parametersObject.vs;
           console.log('Completed setting controls.');
         } catch (error) {
           console.error(error);
@@ -236,7 +250,7 @@ html(lang='en')
       function setControlsURL() {
         try {
           console.log('Setting controls URL...');
-          const controlsURL = `${window.location.protocol}//${window.location.hostname}${window.location.pathname}?a=${encodeURIComponent(parametersObject.a)}&ac=${parametersObject.ac}&as=${parametersObject.as}&ar=${parametersObject.ar}&v=${encodeURIComponent(parametersObject.v)}&vw=${parametersObject.vw}&vh=${parametersObject.vh}&vf=${parametersObject.vf}`;
+          const controlsURL = `${window.location.protocol}//${window.location.hostname}${window.location.pathname}?a=${encodeURIComponent(parametersObject.a)}&ac=${parametersObject.ac}&as=${parametersObject.as}&ar=${parametersObject.ar}&v=${encodeURIComponent(parametersObject.v)}&vw=${parametersObject.vw}&vh=${parametersObject.vh}&vf=${parametersObject.vf}&vb=${parametersObject.vb}&vc=${parametersObject.vc}&vs=${parametersObject.vs}`;
           document.getElementById('url').textContent = controlsURL;
           console.log('controlsURL', controlsURL);
         } catch (error) {
@@ -278,27 +292,39 @@ html(lang='en')
               deviceId: {
                 exact: mediaDevicesObject[parametersObject.a].id,
               },
-              channelCount: parametersObject.ac,
-              sampleSize: parametersObject.as,
-              sampleRate: parametersObject.ar,
+              channelCount: {exact : parametersObject.ac},
+              sampleSize: {exact: parametersObject.as},
+              sampleRate: {exact: parametersObject.ar},
               echoCancellation: false,
               noiseSuppression: false,
-              autoGainControl: false,
+              autoGainControl: true,
             },
             video: {
               deviceId: {
                 exact: mediaDevicesObject[parametersObject.v].id,
               },
-              width: parametersObject.vw,
-              height: parametersObject.vh,
-              frameRate: parametersObject.vf,
+              width: {exact: parametersObject.vw},
+              height: {exact: parametersObject.vh},
+              frameRate: {exact: parametersObject.vf},
+              brightness: {exact: parametersObject.vb},
+              contrast: {exact: parametersObject.vc},
+              saturation: {exact: parametersObject.vs},
             },
           };
           console.log('constraints', constraints);
           stream = await navigator.mediaDevices.getUserMedia(constraints);
           video.srcObject = stream;
-          tracks = stream.getTracks();
+          tracks = await stream.getTracks();
+          await tracks[1].applyConstraints({brightness:constraints.video.brightness, contrast:constraints.video.contrast, saturation:constraints.video.saturation});
           document.title = `Video Capture - ${mediaDevicesObject[parametersObject.v]['label']} - ${parametersObject.vw}x${parametersObject.vh} ${parametersObject.vf}fps`;
+          console.log('mediaDevices - getSupportedConstraints()', navigator.mediaDevices.getSupportedConstraints());
+          console.log('audio - tracks', tracks[0]);
+          console.log('video - tracks', tracks[1]);          
+          console.log('audio - getCapabilities()', tracks[0].getCapabilities());
+          console.log('video - getCapabilities()', tracks[1].getCapabilities());          
+          console.log('audio - getSettings()', tracks[0].getSettings());
+          console.log('video - getSettings()', tracks[1].getSettings());
+
         } catch (error) {
           console.error(error);
           document.title = 'Video Capture - Error';
@@ -318,6 +344,9 @@ html(lang='en')
             vw: vResolutions[document.querySelector('input[name="vh"]:checked').value],
             vh: Number(document.querySelector('input[name="vh"]:checked').value),
             vf: Number(document.querySelector('input[name="vf"]:checked').value),
+            vb: Number(document.getElementById('vb').value),
+            vc: Number(document.getElementById('vc').value),
+            vs: Number(document.getElementById('vs').value),
           };
           console.log('parametersObject', parametersObject);
         } catch (error) {
