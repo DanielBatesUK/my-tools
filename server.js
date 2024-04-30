@@ -77,7 +77,7 @@ app.all('/blank-page', routeBlankPage); // Blank page
 app.all('/hashes', routeHashes); // Hashes
 app.all('/ip-address', routeIPAddress); // IP address
 app.all('/lorem-ipsum', routeLoremIpsum); // Lorem ipsum
-app.all('/qr-code', routeQRCode); // QR code
+app.use('/qr-code', routeQRCode); // QR code
 app.all('/uri-encode-decode', routeURIEncodeDecode); // uri encode decode
 app.all('/video-capture', routeVideoCapture); // Video capture
 
