@@ -32,14 +32,16 @@ router.get('/', async (req, res) => {
 
 router.get('/qrcode', async (req, res) => {
   try {
-    const dataString = decodeURIComponent(req.query.chl) || 'Hello World!';
+    const dataString = (req.query.chl && decodeURIComponent(req.query.chl)) || 'Hello World!';
+    const colorDark = (req.query.chcd && decodeURIComponent(req.query.chcd)) || '#000000ff';
+    const colorLight = (req.query.chcl && decodeURIComponent(req.query.chcl)) || '#ffffffff';
     const options = {
       type: 'png',
       errorCorrectionLevel: req.query.chld || 'M',
-      width: Number(req.query.chs) || 256,
-      margin: Number(req.query.chm) || 4,
-      scale: Number(req.query.chsc) || 4,
-      color: { dark: req.query.chcd || '#000000ff', light: req.query.chcl || '#ffffffff' },
+      width: (req.query.chs && Number(req.query.chs)) || 256,
+      margin: (req.query.chm && Number(req.query.chm)) || 4,
+      scale: (req.query.chsc && Number(req.query.chsc)) || 4,
+      color: { dark: colorDark, light: colorLight },
     };
     const qrCodeImage = await qrCode.toBuffer(dataString, options);
     res.writeHead(200, {

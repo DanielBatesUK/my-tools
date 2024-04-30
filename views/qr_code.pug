@@ -20,6 +20,20 @@ html(lang='en')
           label(for='errQ') Q (25%)
           input#errH(type='radio', name='err', value='H')
           label(for='errH') H (30%)
+        .inline-block
+          h3 Dark
+            small Dark colour and alpha transparency
+          label(for='colD') Colour:
+          input#colD(type='color', value='#000000')
+          label(for='colDA' style='margin-left:16px;') Alpha:
+          input#colDA(type='number', value=255, min=0, max=255)
+        .inline-block
+          h3 Light
+            small Light colour and Alpha transparency
+          label(for='colL') Colour:
+          input#colL(type='color', value='#ffffff')
+          label(for='colLA' style='margin-left:16px;') Alpha:
+          input#colLA(type='number', value=255, min=0, max=255)
       div
         .block
           h3 Data string
@@ -39,10 +53,12 @@ html(lang='en')
             chs: document.getElementById('size').value,
             chl: document.getElementById('dataString').value,
             chld: document.querySelector('input[name="err"]:checked').value,
+            chcd: document.getElementById('colD').value + Number(document.getElementById('colDA').value).toString(16).padStart(2, '0'),
+            chcl: document.getElementById('colL').value + Number(document.getElementById('colLA').value).toString(16).padStart(2, '0'),
           };
           console.log({ pObj });
           // Change QR code image source
-          document.getElementById('qrCode').src = `./qr-code/qrcode?chs=${pObj.chs}&chl=${encodeURIComponent(pObj.chl)}&choe=${pObj.choe}&chld=${pObj.chld}`;
+          document.getElementById('qrCode').src = `./qr-code/qrcode?chs=${pObj.chs}&chl=${encodeURIComponent(pObj.chl)}&choe=${pObj.choe}&chld=${pObj.chld}&chcd=${encodeURIComponent(pObj.chcd)}&chcl=${encodeURIComponent(pObj.chcl)}`;
         } catch (error) {
           console.error(error);
         }
