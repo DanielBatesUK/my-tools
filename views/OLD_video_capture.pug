@@ -70,7 +70,6 @@ html(lang='en')
     meta(name='theme-color', content='#101010')
     #container
       video#video-player(autoplay='true')
-      audio#audio-player(autoplay='true')
     #settings-button
       svg(xmlns='http://www.w3.org/2000/svg', viewBox='0 0 24 24')
         g
@@ -125,10 +124,6 @@ html(lang='en')
         label Audio device:
         select#audioinput(name='audioinput')
       .inline-block
-        h3 Audio Enabled
-        input#ae(type='checkbox', name='ae', checked=true, onclick='controlsChange();')
-        label(for='ae') On/Off
-      .inline-block
         h3 Channels
         input#ac1(type='radio', name='ac', value='1', onclick='controlsChange();')
         label(for='ac1') 1 Channel
@@ -164,10 +159,7 @@ html(lang='en')
     script.
       // Variables
       let video = document.querySelector('#video-player');
-      let audio = document.querySelector('#audio-player');
       let tracks;
-      let audioTrack;
-      let videoTrack;
       let mediaDevicesObject = {};
       let parametersObject = {};
       let settingsTimeout;
@@ -215,7 +207,6 @@ html(lang='en')
           console.log('Setting parameters...');
           parametersObject = {
             a: urlParams.a ? urlParams.a : document.getElementById('audioinput').options[0].innerText,
-            ae: urlParams.ae ? (urlParams.ae.toLowerCase() === 'true') : true,
             ac: urlParams.ac ? Number(urlParams.ac) : 2,
             as: urlParams.as ? Number(urlParams.as) : 16,
             ar: urlParams.ar ? Number(urlParams.ar) : 44100,
@@ -239,7 +230,6 @@ html(lang='en')
           console.log('Setting controls...');
           // Audio controls
           document.getElementById('audioinput').value = parametersObject.a;
-          document.getElementById('ae').checked = parametersObject.ae;
           document.getElementById(`ac${parametersObject.ac}`).checked = true;
           document.getElementById(`as${parametersObject.as}`).checked = true;
           document.getElementById(`ar${parametersObject.ar}`).checked = true;
@@ -260,7 +250,7 @@ html(lang='en')
       function setControlsURL() {
         try {
           console.log('Setting controls URL...');
-          const controlsURL = `${window.location.protocol}//${window.location.hostname}${window.location.pathname}?a=${encodeURIComponent(parametersObject.a)}&ae=${parametersObject.ae}&ac=${parametersObject.ac}&as=${parametersObject.as}&ar=${parametersObject.ar}&v=${encodeURIComponent(parametersObject.v)}&vw=${parametersObject.vw}&vh=${parametersObject.vh}&vf=${parametersObject.vf}&vb=${parametersObject.vb}&vc=${parametersObject.vc}&vs=${parametersObject.vs}`;
+          const controlsURL = `${window.location.protocol}//${window.location.hostname}${window.location.pathname}?a=${encodeURIComponent(parametersObject.a)}&ac=${parametersObject.ac}&as=${parametersObject.as}&ar=${parametersObject.ar}&v=${encodeURIComponent(parametersObject.v)}&vw=${parametersObject.vw}&vh=${parametersObject.vh}&vf=${parametersObject.vf}&vb=${parametersObject.vb}&vc=${parametersObject.vc}&vs=${parametersObject.vs}`;
           document.getElementById('url').textContent = controlsURL;
           console.log('controlsURL', controlsURL);
         } catch (error) {
@@ -277,15 +267,15 @@ html(lang='en')
       // Stop media stream if playing
       async function stopMediaStream() {
         try {
-          console.log('Stopping stream tracks...');
+          console.log('Stopping media stream...');
           if (typeof tracks !== 'undefined') {
             tracks.forEach((track) => {
               track.stop();
             });
             video.srcObject = null;
-            console.log('Stream stopped.');
+            console.log('Media stream stopped.');
           } else {
-            console.log('No stream playing.');
+            console.log('No media stream playing.');
           }
         } catch (error) {
           console.error(error);
@@ -298,7 +288,7 @@ html(lang='en')
           await stopMediaStream();
           console.log('Starting media stream...');
           const constraints = {
-            audio: parametersObject.ae === false ? false : {
+            audio: {
               deviceId: {
                 exact: mediaDevicesObject[parametersObject.a].id,
               },
@@ -322,23 +312,19 @@ html(lang='en')
             },
           };
           console.log('constraints', constraints);
-          console.log('getSupportedConstraints()', navigator.mediaDevices.getSupportedConstraints());
-          const stream = await navigator.mediaDevices.getUserMedia(constraints);
-          //const stream = await navigator.mediaDevices.getUserMedia({audio:true, video:true});
-          //const stream = await navigator.mediaDevices.getUserMedia({audio: {deviceId: {exact: mediaDevicesObject[parametersObject.a].id}}, video: {deviceId: {exact: mediaDevicesObject[parametersObject.v].id}}});
+          stream = await navigator.mediaDevices.getUserMedia(constraints);
           tracks = await stream.getTracks();
-          console.log(tracks);
-          Object.keys(tracks).forEach((key) => {
-            console.log(`Track[${key}]`, tracks[key]);
-            console.log(`Track[${key}] getCapabilities()`, tracks[key].getCapabilities());
-            console.log(`Track[${key}] getSettings()`, tracks[key].getSettings());
-            console.log(`Track[${key}] getConstraints()`, tracks[key].getConstraints());
-            // await tracks[1].applyConstraints({frameRate: 60, width: 1920, height: 1080});
-            // console.log('Vidio getSettings()', tracks[1].getSettings());
-            // console.log('Vidio getConstraints()', tracks[1].getConstraints());
-          });
           document.title = `Video Capture - ${mediaDevicesObject[parametersObject.v]['label']} - ${parametersObject.vw}x${parametersObject.vh} ${parametersObject.vf}fps`;
+          console.log('mediaDevices - getSupportedConstraints()', navigator.mediaDevices.getSupportedConstraints());
+          console.log('audio - tracks', tracks[0]);
+          console.log('video - tracks', tracks[1]);          
+          console.log('audio - getCapabilities()', tracks[0].getCapabilities());
+          console.log('video - getCapabilities()', tracks[1].getCapabilities());          
+          console.log('audio - getSettings()', tracks[0].getSettings());
+          console.log('video - getSettings()', tracks[1].getSettings());
+          await tracks[1].applyConstraints({brightness:constraints.video.brightness, contrast:constraints.video.contrast, saturation:constraints.video.saturation});
           video.srcObject = stream;
+
         } catch (error) {
           console.error(error);
           document.title = 'Video Capture - Error';
@@ -351,7 +337,6 @@ html(lang='en')
           console.log('Reading controls and setting parameters...');
           parametersObject = {
             a: document.getElementById('audioinput').value,
-            ae: document.getElementById('ae').checked,
             ac: Number(document.querySelector('input[name="ac"]:checked').value),
             as: Number(document.querySelector('input[name="as"]:checked').value),
             ar: Number(document.querySelector('input[name="ar"]:checked').value),
