@@ -104,7 +104,7 @@ This was one of the first tools I made for myself. A _Lorem Ipsum_ text generato
 http://localhost:3000/qr-code
 ```
 
-I can't remember why I created this page. It creates QR codes using Google's chart infographics api.
+I can't remember why I created this page. It creates QR codes.
 
 ### URI Encode/Decode
 
