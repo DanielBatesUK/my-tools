@@ -21,7 +21,7 @@
   "homepage": "https://github.com/DanielBatesUK/my-tools#readme",
   "dependencies": {
     "cookie-parser": "^1.4.7",
-    "express": "^4.22.1",
+    "express": "^5.2.1",
     "pug": "^3.0.4",
     "qrcode": "^1.5.4"
   }
